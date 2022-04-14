@@ -89,9 +89,26 @@ namespace download.ViewModels
 
         public DelegateCommand<string> DelegateCommandDownFile { get; private set; }
 
+        public DelegateCommand<string> DelegateCommandWindowClose { get; private set; }
+
         public MainWindowViewModel()
         {
             DelegateCommandDownFile = new DelegateCommand<string>(ExecuteDownFile);
+            DelegateCommandWindowClose = new DelegateCommand<string>(ExecuteWindowsButton);
+        }
+
+        private void ExecuteWindowsButton(string windowButton)
+        {
+            switch (windowButton)
+            {
+                case "min":
+                    break;
+                case "max":
+                    break;
+                case "close":
+                    Application.Current.Shutdown();
+                    break;
+            }
         }
 
         private async void ExecuteDownFile(string fileName)
@@ -151,16 +168,15 @@ namespace download.ViewModels
                             {
                                 var bufferByte = new byte[DEFAULT_BUFFER_SIZE];
                                 int startByte = 0;
-                                while (allFileLength > 0)
+                                var downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
+                                while (downByte > 0)
                                 {
-                                    var downByte =await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
-                                    if (downByte == 0) break;
-
                                     fileStream.Position = startByte;
                                     await fileStream.WriteAsync(bufferByte, 0, bufferByte.Length);
 
+                                    downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
+
                                     startByte += downByte;
-                                    allFileLength -= downByte;
 
                                     if (startByte < ByteSize)
                                     {
@@ -182,6 +198,7 @@ namespace download.ViewModels
                                 }
                             }
                         }
+                        CurrentProgress = MaxProgress;
                     }
                 }
             }

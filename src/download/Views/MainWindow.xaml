@@ -10,79 +10,298 @@
     xmlns:prism="http://prismlibrary.com/"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Title="{Binding Title}"
-    Width="525"
-    Height="150"
+    Width="800"
+    Height="650"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    AllowsTransparency="True"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
     TextElement.FontSize="13"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
     mc:Ignorable="d">
+    <Window.Resources>
+        <Style x:Key="StackPanelMouseOver" TargetType="{x:Type StackPanel}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EAECF0" />
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="WindowsButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Width" Value="40" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EAECF0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="WindowsCloseButton" TargetType="{x:Type Button}">
+            <Style.Setters>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Width" Value="40" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Button.Background" Value="#FD0007" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <system:Double x:Key="ButtonWidth">140</system:Double>
+    </Window.Resources>
     <Grid>
-        <Grid.Resources>
-            <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="TextBox">
-                <Setter Property="FontFamily" Value="Consolas" />
-                <Setter Property="MinWidth" Value="340" />
-                <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
-                <Setter Property="Margin" Value="10,2" />
-                <Setter Property="HorizontalAlignment" Value="Left" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="4" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="4" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <StackPanel.Resources>
-                <system:Double x:Key="ButtonWidth">100</system:Double>
-                <converter:EmptyConverer x:Key="EmptyStringToBoolean" />
-            </StackPanel.Resources>
-            <TextBox
-                x:Name="UrlTextBox"
-                materialDesign:HintAssist.Hint="FileName"
-                Text="" />
-            <Button
-                Width="{StaticResource ButtonWidth}"
-                Command="{Binding DelegateCommandDownFile}"
-                CommandParameter="{Binding ElementName=UrlTextBox, Path=Text}"
-                Content="DownLoad"
-                IsEnabled="{Binding ElementName=UrlTextBox, Path=Text, Converter={StaticResource EmptyStringToBoolean}}"
-                Style="{StaticResource MaterialDesignRaisedLightButton}"
-                ToolTip="Resource name: MaterialDesignRaisedLightButton" />
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="#333333">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="1" LastChildFill="False">
+                <StackPanel DockPanel.Dock="Top">
+                    <Button materialDesign:RippleAssist.IsDisabled="True" Style="{StaticResource MaterialDesignIconForegroundButton}">
+                        <materialDesign:PackIcon Foreground="White" Kind="AlphaLBox" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="MaterialDesignIconForegroundButton">
+                        <materialDesign:PackIcon Foreground="White" Kind="Menu" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="MaterialDesignIconForegroundButton">
+                        <materialDesign:PackIcon Foreground="White" Kind="Add" />
+                    </Button>
+                </StackPanel>
 
-        <ProgressBar
-            x:Name="FileProgressBar"
-            Grid.Row="2"
-            Height="10"
-            Maximum="{Binding MaxProgress}"
-            Value="{Binding CurrentProgress}" />
+                <StackPanel DockPanel.Dock="Bottom">
+                    <Button Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="MaterialDesignIconForegroundButton">
+                        <materialDesign:PackIcon Foreground="White" Kind="Tune" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignIconForegroundButton}" ToolTip="MaterialDesignIconForegroundButton">
+                        <materialDesign:PackIcon Foreground="White" Kind="HelpCircleOutline" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Column="2" Background="#F4F5F7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1">
+                <TextBlock
+                    Height="30"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    Text="任务列表" />
+                <!--<Button
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource MaterialDesignFlatDarkButton}"
+                    ToolTip="MaterialDesignFlatButton">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Play" />
+                        <TextBlock
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="进行中" />
+                    </StackPanel>
+                </Button>
+                <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatDarkButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Pause" />
+                        <TextBlock
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="等待中" />
+                    </StackPanel>
+                </Button>
+                <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatDarkButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Stop" />
+                        <TextBlock
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="已停止" />
+                    </StackPanel>
+                </Button>-->
 
-        <StackPanel
-            Grid.Row="4"
-            HorizontalAlignment="Right"
-            Orientation="Horizontal">
-            <TextBlock
-                x:Name="DownSizeTextBlock"
-                Padding="10,0,10,0"
-                HorizontalAlignment="Left"
-                Text="{Binding CurrentLength}" />
-            <TextBlock
-                x:Name="AllSizeTextBlock"
-                Padding="10,0,10,0"
-                HorizontalAlignment="Left"
-                Text="{Binding FileLength}" />
-            <TextBlock
-                x:Name="FileNameTextBlock"
-                Padding="10,0,10,0"
-                HorizontalAlignment="Left"
-                Text="{Binding FileName}" />
-        </StackPanel>
+
+                <StackPanel
+                    Height="30"
+                    Margin="10,10,10,0"
+                    Orientation="Horizontal"
+                    Style="{StaticResource ResourceKey=StackPanelMouseOver}">
+                    <materialDesign:PackIcon VerticalAlignment="Center" Kind="Play" />
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        Text="进行中" />
+                </StackPanel>
+                <StackPanel
+                    Height="30"
+                    Margin="10,10,10,0"
+                    Orientation="Horizontal"
+                    Style="{StaticResource ResourceKey=StackPanelMouseOver}">
+                    <materialDesign:PackIcon VerticalAlignment="Center" Kind="Pause" />
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        Text="等待中" />
+                </StackPanel>
+                <StackPanel
+                    Height="30"
+                    Margin="10,10,10,0"
+                    Orientation="Horizontal"
+                    Style="{StaticResource ResourceKey=StackPanelMouseOver}">
+                    <materialDesign:PackIcon VerticalAlignment="Center" Kind="Stop" />
+                    <TextBlock
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        FontSize="14"
+                        Text="已停止" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <Button
+                    Command="{Binding DelegateCommandWindowClose}"
+                    CommandParameter="min"
+                    Content="{materialDesign:PackIcon WindowMinimize}"
+                    Style="{StaticResource WindowsButton}" />
+                <Button
+                    Command="{Binding DelegateCommandWindowClose}"
+                    CommandParameter="max"
+                    Content="{materialDesign:PackIcon WindowMaximize}"
+                    Style="{StaticResource WindowsButton}" />
+                <Button
+                    Command="{Binding DelegateCommandWindowClose}"
+                    CommandParameter="close"
+                    Content="{materialDesign:PackIcon WindowClose}"
+                    Style="{StaticResource WindowsCloseButton}" />
+            </StackPanel>
+            <DockPanel
+                Grid.Row="1"
+                Margin="0,10,40,0"
+                LastChildFill="True">
+                <TextBlock
+                    DockPanel.Dock="Left"
+                    FontSize="15"
+                    Text="下载中" />
+                <StackPanel
+                    HorizontalAlignment="Right"
+                    DockPanel.Dock="Right"
+                    Orientation="Horizontal">
+                    <Button
+                        Content="{materialDesign:PackIcon WindowClose}"
+                        Style="{StaticResource WindowsButton}"
+                        ToolTip="移除选中的任务" />
+                    <Button
+                        Content="{materialDesign:PackIcon Refresh}"
+                        Style="{StaticResource WindowsButton}"
+                        ToolTip="刷新任务列表" />
+                    <Button
+                        Content="{materialDesign:PackIcon Play}"
+                        Style="{StaticResource WindowsButton}"
+                        ToolTip="恢复所有任务" />
+                    <Button
+                        Content="{materialDesign:PackIcon Pause}"
+                        Style="{StaticResource WindowsButton}"
+                        ToolTip="暂停所有任务" />
+                </StackPanel>
+            </DockPanel>
+            <Border
+                Grid.Row="2"
+                Margin="0,0,50,0"
+                VerticalAlignment="Center"
+                BorderBrush="{DynamicResource MaterialDesignDivider}"
+                BorderThickness="0,2,0,0" />
+            <!--<Grid Grid.Row="2">
+                <Grid.Resources>
+                    <Style BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="TextBox">
+                        <Setter Property="FontFamily" Value="Consolas" />
+                        <Setter Property="MinWidth" Value="340" />
+                        <Setter Property="materialDesign:HintAssist.IsFloating" Value="True" />
+                        <Setter Property="Margin" Value="10,2" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <converter:EmptyConverer x:Key="EmptyStringToBoolean" />
+                    </StackPanel.Resources>
+                    <TextBox
+                        x:Name="UrlTextBox"
+                        materialDesign:HintAssist.Hint="FileName"
+                        Text="" />
+                    <Button
+                        Width="{StaticResource ButtonWidth}"
+                        Command="{Binding DelegateCommandDownFile}"
+                        CommandParameter="{Binding ElementName=UrlTextBox, Path=Text}"
+                        Content="DownLoad"
+                        IsEnabled="{Binding ElementName=UrlTextBox, Path=Text, Converter={StaticResource EmptyStringToBoolean}}"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton" />
+                </StackPanel>
+
+                <ProgressBar
+                    x:Name="FileProgressBar"
+                    Grid.Row="2"
+                    Height="10"
+                    Maximum="{Binding MaxProgress}"
+                    Value="{Binding CurrentProgress}" />
+
+                <StackPanel
+                    Grid.Row="4"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        x:Name="DownSizeTextBlock"
+                        Padding="10,0,10,0"
+                        HorizontalAlignment="Left"
+                        Text="{Binding CurrentLength}" />
+                    <TextBlock
+                        x:Name="AllSizeTextBlock"
+                        Padding="10,0,10,0"
+                        HorizontalAlignment="Left"
+                        Text="{Binding FileLength}" />
+                    <TextBlock
+                        x:Name="FileNameTextBlock"
+                        Padding="10,0,10,0"
+                        HorizontalAlignment="Left"
+                        Text="{Binding FileName}" />
+                </StackPanel>
+            </Grid>-->
+        </Grid>
     </Grid>
 </Window>

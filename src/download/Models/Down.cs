@@ -31,5 +31,7 @@ namespace download.Models
         /// 地址
         /// </summary>
         public string Url { get; set; }
+
+        public string ETag { get; set; }
     }
 }
