@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="download.Views.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:download.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewModel="clr-namespace:download.ViewModels"
+    Width="450"
+    Height="280"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True,
+                                     Type={x:Type viewModel:AboutViewModel}}"
+    d:DesignHeight="280"
+    d:DesignWidth="450"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="#FFFFFF"
+    TextElement.FontSize="14"
+    mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,50,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Width="40"
+                        Height="40"
+                        Kind="AlphaLBoxOutline" />
+                    <materialDesign:PackIcon
+                        Width="40"
+                        Height="40"
+                        Kind="CircleSmall" />
+                    <materialDesign:PackIcon
+                        Width="40"
+                        Height="40"
+                        Kind="AlphaY" />
+                    <TextBlock Margin="20,0" Text="{Binding Version}" />
+                </StackPanel>
+                <TextBlock Text="{Binding EngineVersion}" />
+                <UniformGrid Columns="2">
+                    <TextBlock Text="Prism" />
+                    <TextBlock Text="Mataerial Design In Xaml" />
+                    <TextBlock Text="SQLSugarCore" />
+                    <TextBlock Text="SQLite" />
+                </UniformGrid>
+            </StackPanel>
+        </Grid>
+        <DockPanel
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            LastChildFill="True">
+            <StackPanel
+                Margin="20,0"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Copyright" />
+                <TextBlock Text="{Binding Author}" />
+            </StackPanel>
+            <StackPanel
+                Margin="20,0"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBlock Margin="10,0,0,0" Text="{Binding License}" />
+                <TextBlock Margin="10,0,0,0" Text="{Binding ContactUs}" />
+                <TextBlock Margin="10,0,0,0" Text="{Binding Help}" />
+                <TextBlock Margin="10,0,0,0" Text="{Binding Upgrade}" />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

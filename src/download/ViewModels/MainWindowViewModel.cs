@@ -1,4 +1,7 @@
-﻿using Prism.Commands;
+﻿using download.EventAggregator;
+using download.Views;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace download.ViewModels
@@ -23,7 +27,7 @@ namespace download.ViewModels
         private const string BASEURL = "http://localhost:9090";
         private const double ByteSize = 1024.00D;
         private const double KByteSize = 1024D * 1024D;
-        private const int DEFAULT_BUFFER_SIZE = 1024*10;
+        private const int DEFAULT_BUFFER_SIZE = 1024 * 10;
 
         private string _fileLength = string.Empty;
         private string _currentLength = string.Empty;
@@ -31,9 +35,11 @@ namespace download.ViewModels
         private int _maxProgress = 100;
         private int _currentProgress = 0;
 
+        private object? _aboutDialog;
+        private bool _isAboutDialogOpen;
         public enum FileStatus
         {
-            Ready=0,
+            Ready = 0,
             Running,
             Stop,
             End
@@ -87,16 +93,81 @@ namespace download.ViewModels
             set { SetProperty(ref _fileName, value); }
         }
 
+        public object? AboutDialog
+        {
+            get { return _aboutDialog; }
+            set { SetProperty(ref _aboutDialog, value); }
+        }
+
+        public bool IsAboutDialogOpen
+        {
+            get { return _isAboutDialogOpen; }
+            set { SetProperty(ref _isAboutDialogOpen, value); }
+        }
+
         public DelegateCommand<string> DelegateCommandDownFile { get; private set; }
 
-        public MainWindowViewModel()
+        public DelegateCommand<string> DelegateCommandWindowClose { get; private set; }
+
+        public DelegateCommand<object> DelegateCommandTaskType { get; private set; }
+
+        public DelegateCommand<string> DelegateComandNavigationRail { get;private set; }
+
+        private readonly IEventAggregator _ea;
+
+        public MainWindowViewModel(IEventAggregator ea)
         {
+            _ea = ea;
             DelegateCommandDownFile = new DelegateCommand<string>(ExecuteDownFile);
+            DelegateCommandWindowClose = new DelegateCommand<string>(ExecuteWindowsButton);
+            DelegateCommandTaskType = new DelegateCommand<object>(ExecuteTaskType);
+            DelegateComandNavigationRail = new DelegateCommand<string>(ExecuteNavigationRail);
+        }
+
+        private void ExecuteTaskType(object task)
+        {
+            //switch (task)
+            //{
+            //    case "play":
+            //        break;
+            //    case "pause":
+            //        break;
+            //    case "stop":
+            //        break;
+            //}
+            _ea.GetEvent<TaskTypeEventArgss>().Publish(task);
+        }
+
+        private void ExecuteNavigationRail(string navigation)
+        {
+            switch (navigation)
+            {
+                case "help":
+                    AboutDialog = new About();
+                    IsAboutDialogOpen = true;
+                    break;
+            }
+            _ea.GetEvent<NavigationRailEventArgs>().Publish(navigation);
+        }
+
+        private void ExecuteWindowsButton(string windowButton)
+        {
+
+            switch (windowButton)
+            {
+                case "min":
+                    break;
+                case "max":
+                    break;
+                case "close":
+                    Application.Current.Shutdown();
+                    break;
+            }
         }
 
         private async void ExecuteDownFile(string fileName)
         {
-            var lastIndex=fileName.LastIndexOf('.');
+            var lastIndex = fileName.LastIndexOf('.');
             if (lastIndex == -1) return;
 
             var suffix = fileName.Substring(lastIndex, fileName.Length - lastIndex);
@@ -104,7 +175,7 @@ namespace download.ViewModels
             var searchPattern = $"{prefix}*{suffix}";
 
             Uri uri = new Uri($"{BASEURL}/{fileName}");
-          
+
             using (var httpClient = new HttpClient())
             {
                 var cancellationSource = new CancellationTokenSource(new TimeSpan(0, 0, 0, 0, 5000));
@@ -151,16 +222,15 @@ namespace download.ViewModels
                             {
                                 var bufferByte = new byte[DEFAULT_BUFFER_SIZE];
                                 int startByte = 0;
-                                while (allFileLength > 0)
+                                var downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
+                                while (downByte > 0)
                                 {
-                                    var downByte =await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
-                                    if (downByte == 0) break;
-
                                     fileStream.Position = startByte;
                                     await fileStream.WriteAsync(bufferByte, 0, bufferByte.Length);
 
+                                    downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
+
                                     startByte += downByte;
-                                    allFileLength -= downByte;
 
                                     if (startByte < ByteSize)
                                     {
@@ -182,6 +252,7 @@ namespace download.ViewModels
                                 }
                             }
                         }
+                        CurrentProgress = MaxProgress;
                     }
                 }
             }
