@@ -111,7 +111,7 @@ namespace download.ViewModels
 
         public DelegateCommand<object> DelegateCommandTaskType { get; private set; }
 
-        public DelegateCommand<string> DelegateComandNavigationRail { get;private set; }
+        public DelegateCommand<string> DelegateComandNavigationRail { get; private set; }
 
         private readonly IEventAggregator _ea;
 
