@@ -2,6 +2,7 @@
     x:Class="download.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:consts="clr-namespace:download.Shared.Main"
     xmlns:controls="clr-namespace:download.Controls"
     xmlns:converter="clr-namespace:download.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -120,21 +121,24 @@
                         Command="{Binding DelegateCommandTaskType}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="进行中"
-                        Icon="Play" />
+                        Icon="Play"
+                        MouseOverBackground="{StaticResource PrimaryBackground}" />
                     <controls:IconButton
                         x:Name="PauseIconButton"
                         Margin="0,5"
                         Command="{Binding DelegateCommandTaskType}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="等待中"
-                        Icon="Pause" />
+                        Icon="Pause"
+                        MouseOverBackground="{StaticResource PrimaryBackground}" />
                     <controls:IconButton
                         x:Name="StopIconButton"
                         Margin="0,5"
                         Command="{Binding DelegateCommandTaskType}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
                         Content="已停止"
-                        Icon="Stop" />
+                        Icon="Stop"
+                        MouseOverBackground="{StaticResource PrimaryBackground}" />
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="4">
@@ -148,24 +152,31 @@
                     x:Name="WindowStackPanel"
                     Grid.Row="0"
                     HorizontalAlignment="Right"
-                    Background="#FFFFFF"
+                    Background="Transparent"
                     MouseLeftButtonDown="WindowStackPanel_MouseLeftButtonDown"
                     Orientation="Horizontal">
-                    <Button
+                    <controls:IconButton
+                        Width="50"
+                        ButtonType="ICON"
                         Command="{Binding DelegateCommandWindowClose}"
-                        CommandParameter="min"
-                        Content="{materialDesign:PackIcon WindowMinimize}"
-                        Style="{StaticResource WindowsButton}" />
-                    <Button
+                        CommandParameter="{x:Static consts:MainButtonConsts.MAIN_CLOSE_Button}"
+                        Icon="WindowMinimize"
+                        MouseOverBackground="{StaticResource PrimaryBackground}" />
+                    <controls:IconButton
+                        Width="50"
+                        ButtonType="ICON"
                         Command="{Binding DelegateCommandWindowClose}"
-                        CommandParameter="max"
-                        Content="{materialDesign:PackIcon WindowMaximize}"
-                        Style="{StaticResource WindowsButton}" />
-                    <Button
+                        CommandParameter="{x:Static consts:MainButtonConsts.MAIN_MAX_BUTTON}"
+                        Icon="WindowMaximize"
+                        MouseOverBackground="{StaticResource PrimaryBackground}" />
+                    <controls:IconButton
+                        Width="50"
+                        ButtonType="ICON"
                         Command="{Binding DelegateCommandWindowClose}"
-                        CommandParameter="close"
-                        Content="{materialDesign:PackIcon WindowClose}"
-                        Style="{StaticResource WindowsCloseButton}" />
+                        CommandParameter="{x:Static consts:MainButtonConsts.MAIN_CLOSE_Button}"
+                        Icon="WindowClose"
+                        MouseOverBackground="{StaticResource PrimaryColseBackground}"
+                        MouseOverForeground="{StaticResource PrimaryFontWhite}" />
                 </StackPanel>
                 <DockPanel
                     Grid.Row="1"

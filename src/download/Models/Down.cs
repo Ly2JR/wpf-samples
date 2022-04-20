@@ -15,7 +15,7 @@ namespace download.Models
         /// <summary>
         /// 文件名称
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
         /// <summary>
         /// 文件大小
@@ -30,8 +30,8 @@ namespace download.Models
         /// <summary>
         /// 地址
         /// </summary>
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
-        public string ETag { get; set; }
+        public string? ETag { get; set; }
     }
 }

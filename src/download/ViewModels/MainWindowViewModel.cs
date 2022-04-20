@@ -1,4 +1,6 @@
 ﻿using download.EventAggregator;
+using download.Shared.About;
+using download.Shared.Main;
 using download.Views;
 using Prism.Commands;
 using Prism.Events;
@@ -122,6 +124,8 @@ namespace download.ViewModels
             DelegateCommandWindowClose = new DelegateCommand<string>(ExecuteWindowsButton);
             DelegateCommandTaskType = new DelegateCommand<object>(ExecuteTaskType);
             DelegateComandNavigationRail = new DelegateCommand<string>(ExecuteNavigationRail);
+
+            _ea.GetEvent<WindowButtonEventArgs>().Subscribe(ExecuteWindowsButton);
         }
 
         private void ExecuteTaskType(object task)
@@ -155,11 +159,14 @@ namespace download.ViewModels
 
             switch (windowButton)
             {
-                case "min":
+                case MainButtonConsts.MAIN_MIN_BUTTON:
                     break;
-                case "max":
+                case MainButtonConsts.MAIN_MAX_BUTTON:
                     break;
-                case "close":
+                case AboutButtonConsts.ABOUT_CLOSE_BUTTON:
+                    IsAboutDialogOpen = false;
+                    break;
+                case MainButtonConsts.MAIN_CLOSE_Button:
                     Application.Current.Shutdown();
                     break;
             }

@@ -13,6 +13,9 @@ namespace download.Controls
     public  class IconButton:Button
     {
 
+       
+
+
         static IconButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(IconButton), new FrameworkPropertyMetadata(typeof(IconButton)));
@@ -76,6 +79,24 @@ namespace download.Controls
         {
             get { return (Brush)GetValue(MousePressedForegroundProperty); }
             set { SetValue(MousePressedForegroundProperty, value); }
+        }
+
+        public ButtonTypeEnum ButtonType
+        {
+            get { return (ButtonTypeEnum)GetValue(ButtonTypeProperty); }
+            set { SetValue(ButtonTypeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonTypeProperty =
+            DependencyProperty.Register("ButtonType",typeof(ButtonTypeEnum),typeof(IconButton),new PropertyMetadata(ButtonTypeEnum.ICON_TEXT));
+
+
+        public enum ButtonTypeEnum
+        {
+            //图标文本
+            ICON_TEXT = 0,
+            //只有图标
+            ICON = 1,
         }
 
     }

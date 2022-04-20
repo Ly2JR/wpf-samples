@@ -1,4 +1,8 @@
-﻿using Prism.Mvvm;
+﻿using download.EventAggregator;
+using download.Shared.About;
+using Prism.Commands;
+using Prism.Events;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +37,21 @@ namespace download.ViewModels
         public string Version { get { return _version; } set { SetProperty(ref _version, value);} }
 
         public string EngineVersion { get { return _engineVersion; } set { SetProperty(ref _engineVersion, value);} }
-        
+
+        public DelegateCommand DelegateCommandAboutClose { get; private set; }
+
+        private readonly IEventAggregator _ea;
+
+        public AboutViewModel(IEventAggregator ea)
+        {
+            _ea = ea;
+            DelegateCommandAboutClose = new DelegateCommand(ExecuteAboutCloseButton);
+        }
+
+        private void ExecuteAboutCloseButton()
+        {
+            _ea.GetEvent<WindowButtonEventArgs>().Publish(AboutButtonConsts.ABOUT_CLOSE_BUTTON);
+        }
+
     }
 }

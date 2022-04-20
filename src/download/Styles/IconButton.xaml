@@ -3,59 +3,78 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:download.Controls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-
-
-    <SolidColorBrush x:Key="NormalForeground">#303133</SolidColorBrush>
-    <SolidColorBrush x:Key="NormalBackground">#F4F5F7</SolidColorBrush>
-    <SolidColorBrush x:Key="ActivedForeground">#5B5BFA</SolidColorBrush>
-    <SolidColorBrush x:Key="ActivedBackground">#EAECF0</SolidColorBrush>
-
     <Style TargetType="{x:Type controls:IconButton}">
         <Style.Setters>
             <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Foreground" Value="{StaticResource NormalForeground}" />
-            <Setter Property="Background" Value="{StaticResource NormalBackground}" />
-            <Setter Property="MouseOverForeground" Value="{StaticResource ActivedForeground}" />
-            <Setter Property="MouseOverBackground" Value="{StaticResource ActivedBackground}" />
-            <Setter Property="MousePressedForeground" Value="{StaticResource ActivedForeground}" />
-            <Setter Property="MousePressedBackground" Value="{StaticResource ActivedBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryFontBlack}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="MouseOverForeground" Value="{StaticResource PrimaryForeground}" />
+            <Setter Property="MouseOverBackground" Value="Transparent" />
+            <Setter Property="MousePressedForeground" Value="{StaticResource PrimaryForeground}" />
+            <Setter Property="MousePressedBackground" Value="Transparent" />
             <Setter Property="SnapsToDevicePixels" Value="true" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type controls:IconButton}">
-                        <Border x:Name="IconButtonBorder" Background="{TemplateBinding Background}">
-                            <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
-                                <materialDesign:PackIcon
-                                    x:Name="Icon"
-                                    Width="22"
-                                    Height="22"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Kind="{TemplateBinding Icon}" />
-                                <TextBlock
-                                    x:Name="IconButtonText"
-                                    Padding="10,0,0,0"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="14"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Text="{TemplateBinding Content}" />
-                            </StackPanel>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="IconButtonText" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
-                                <Setter TargetName="Icon" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
-                                <Setter TargetName="IconButtonBorder" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
-                            </Trigger>
-                            <!--<Trigger Property="IsPressed" Value="True">
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="ButtonType" Value="ICON_TEXT">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:IconButton}">
+                            <Border x:Name="IconButtonBorder" Background="{TemplateBinding Background}">
+                                <StackPanel Margin="0,10,0,10" Orientation="Horizontal">
+                                    <materialDesign:PackIcon
+                                        x:Name="Icon"
+                                        Width="22"
+                                        Height="22"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Kind="{TemplateBinding Icon}" />
+                                    <TextBlock
+                                        x:Name="IconButtonText"
+                                        Padding="10,0,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Text="{TemplateBinding Content}" />
+                                </StackPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="IconButtonText" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <Setter TargetName="Icon" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <Setter TargetName="IconButtonBorder" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Trigger>
+                                <!--<Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="IconButtonText" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
                                 <Setter TargetName="Icon" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
                                 <Setter TargetName="IconButtonBorder" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Trigger>-->
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style.Setters>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="ButtonType" Value="ICON">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type controls:IconButton}">
+                            <Border x:Name="IconButtonBorder" Background="{TemplateBinding Background}">
+                                <materialDesign:PackIcon
+                                    x:Name="Icon"
+                                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Kind="{TemplateBinding Icon}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Icon" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <Setter TargetName="IconButtonBorder" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

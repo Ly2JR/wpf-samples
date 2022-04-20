@@ -28,7 +28,6 @@ namespace download.Views
         private readonly IEventAggregator _ea;
 
         private SolidColorBrush _normalForeground;
-        private SolidColorBrush _normalBackground;
         private SolidColorBrush _activedForeground;
         private SolidColorBrush _activedBackground;
 
@@ -36,10 +35,9 @@ namespace download.Views
         {
             InitializeComponent();
 
-            _normalForeground = (SolidColorBrush)FindResource("NormalForeground");
-            _normalBackground = (SolidColorBrush)FindResource("NormalBackground");
-            _activedForeground = (SolidColorBrush)FindResource("ActivedForeground");
-            _activedBackground = (SolidColorBrush)FindResource("ActivedBackground");
+            _normalForeground = (SolidColorBrush)FindResource("PrimaryFontBlack");
+            _activedForeground = (SolidColorBrush)FindResource("PrimaryForeground");
+            _activedBackground = (SolidColorBrush)FindResource("PrimaryBackground");
 
             _ea = ea;
 
@@ -80,7 +78,7 @@ namespace download.Views
                             if (child.Name != iconButton.Name)
                             {
                                 child.Foreground = _normalForeground;
-                                child.Background = _normalBackground;
+                                child.Background =new SolidColorBrush( Colors.Transparent);
                             }
                         }
                     }
