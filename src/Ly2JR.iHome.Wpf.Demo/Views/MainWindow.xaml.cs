@@ -24,5 +24,10 @@ namespace Ly2JR.iHome.Wpf.Demo.Views
         {
             InitializeComponent();
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

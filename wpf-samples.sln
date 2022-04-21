@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8FEF1E9C-D04
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ly2JR.iHome.Wpf", "src\Ly2JR.iHome.Wpf\Ly2JR.iHome.Wpf.csproj", "{C8D49A0C-B0FA-429A-9F1A-45FDD52B2258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ly2JR.iHome.Wpf.Demo", "src\Ly2JR.iHome.Wpf.Demo\Ly2JR.iHome.Wpf.Demo.csproj", "{FF830F85-AE85-4420-9E82-4E7CBAFFF802}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ly2JR.iHome.Wpf.Demo", "src\Ly2JR.iHome.Wpf.Demo\Ly2JR.iHome.Wpf.Demo.csproj", "{FF830F85-AE85-4420-9E82-4E7CBAFFF802}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -26,51 +26,111 @@
         <Setter Property="Background" Value="{StaticResource Primary}" />
         <Setter Property="Foreground" Value="{StaticResource PrimaryForeground}" />
         <Setter Property="Height" Value="{StaticResource PrimaryButtonHeight}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="{StaticResource PrimaryForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Padding" Value="5,0" />
         <Setter Property="ihome:ButtonAttached.CornerRadius" Value="2.5" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border
+        <Style.Triggers>
+            <Trigger Property="ihome:ButtonAttached.ThemeStyle" Value="Light">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderThickness="1"
                         CornerRadius="{Binding Path=(ihome:ButtonAttached.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}}"
                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                        <ContentPresenter
+                                <ContentPresenter
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             Focusable="False"
                             RecognizesAccessKey="True"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--  浅色按钮  -->
-    <Style
-        x:Key="LightButton"
-        BasedOn="{StaticResource iHomeButton}"
-        TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource Primary}" />
-        <Setter Property="Foreground" Value="{StaticResource PrimaryForeground}" />
-    </Style>
-
-    <!--  暗色按钮  -->
-    <Style
-        x:Key="Darkbutton"
-        BasedOn="{StaticResource iHomeButton}"
-        TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{StaticResource Dark}" />
-        <Setter Property="Foreground" Value="{StaticResource DarkForeground}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource PrimaryMouseOver}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource PrimaryMouseOverForeground}"/>
+                                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryMouseOverBorder}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="ihome:ButtonAttached.ThemeStyle" Value="Dark">
+                <Setter Property="Background" Value="{StaticResource Dark}"/>
+                <Setter Property="Foreground" Value="{StaticResource DarkForeground}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DarkBorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        CornerRadius="{Binding Path=(ihome:ButtonAttached.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource DarkMouseOver}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource DarkMouseOverForeground}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="ihome:ButtonAttached.IsAccent" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryAccent}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource PrimaryAccentForeground}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        CornerRadius="{Binding Path=(ihome:ButtonAttached.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <ContentPresenter
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="{StaticResource MouseOverOpacity}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Opacity" Value="{StaticResource Opacity}"/>
+                                    <Setter Property="Background" Value="{StaticResource PrimaryAccent}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

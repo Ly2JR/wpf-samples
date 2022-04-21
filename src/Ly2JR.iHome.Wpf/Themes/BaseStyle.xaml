@@ -17,17 +17,26 @@
 
     <!--  浅色  -->
     <SolidColorBrush x:Key="Primary">#FFFFFF</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryForeground">#737478</SolidColorBrush>
-
+    <SolidColorBrush x:Key="PrimaryForeground">#606266</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryBorderBrush">#DCDFE6</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryMouseOver">#EFEFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryMouseOverForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryMouseOverBorder">#CECEFE</SolidColorBrush>
+    
     <!--  暗色  -->
-    <SolidColorBrush x:Key="Dark">#5B5BFA</SolidColorBrush>
-    <SolidColorBrush x:Key="DarkForeground">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="Dark">#5B5B5B</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkForeground">#E6E6E6</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkBorderBrush">#606060</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkMouseOver">#333333</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkMouseOverForeground">#5B5BFA</SolidColorBrush>
 
     <!--  强调  -->
-    <SolidColorBrush x:Key="PrimaryAccent">#FFFFFF</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryAccentBackground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryAccent">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryAccentForeground">#FFFFFF</SolidColorBrush>
 
     <!--  默认按钮高度  -->
     <system:Double x:Key="PrimaryButtonHeight">28</system:Double>
-
+    <!--Opacity-->
+    <system:Double x:Key="MouseOverOpacity">0.7</system:Double>
+    <system:Double x:Key="Opacity">1</system:Double>
 </ResourceDictionary>

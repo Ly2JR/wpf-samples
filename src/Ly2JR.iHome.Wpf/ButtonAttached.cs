@@ -50,5 +50,46 @@ namespace Ly2JR.iHome.Wpf
         public static readonly DependencyProperty CircleDimaProperty =
             DependencyProperty.RegisterAttached("CircleDima", typeof(double), typeof(ButtonAttached));
         #endregion
+
+
+
+        #region IsAccent
+
+        public static bool GetIsAccent(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsAccentProperty);
+        }
+
+        public static void SetIsAccent(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsAccentProperty, value);
+        }
+
+        /// <summary>
+        /// 是否强调
+        /// </summary>
+        public static readonly DependencyProperty IsAccentProperty =
+            DependencyProperty.RegisterAttached("IsAccent", typeof(bool), typeof(ButtonAttached), new PropertyMetadata(false));
+
+        #endregion
+
+
+
+
+        public static ThemeStyle GetThemeStyle(DependencyObject obj)
+        {
+            return (ThemeStyle)obj.GetValue(ThemeStyleProperty);
+        }
+
+        public static void SetThemeStyle(DependencyObject obj, ThemeStyle value)
+        {
+            obj.SetValue(ThemeStyleProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Theme.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ThemeStyleProperty =
+            DependencyProperty.RegisterAttached("ThemeStyle", typeof(ThemeStyle), typeof(ButtonAttached), new PropertyMetadata(ThemeStyle.Light));
+
+
     }
 }
