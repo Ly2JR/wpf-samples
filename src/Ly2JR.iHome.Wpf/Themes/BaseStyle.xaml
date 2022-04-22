@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Ly2JR.iHome.Wpf.Converters"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!--  外观二种主题,浅色(默认)，深色  -->
 
@@ -8,35 +9,55 @@
     <Color x:Key="DialogBackgroundColor">#808080</Color>
 
     <!--  浅色(默认)  -->
-    <Color x:Key="PrimaryForegroundColor">#303133</Color>
-    <Color x:Key="PrimaryBackgroundColor">#FFFFFF</Color>
+    <Color x:Key="LightForegroundColor">#303133</Color>
+    <Color x:Key="LightBackgroundColor">#FFFFFF</Color>
 
     <!--  深色  -->
     <Color x:Key="DarkForegroundColor">#D0D0D0</Color>
-    <Color x:Key="DardBackgroundColor">#343434</Color>
+    <Color x:Key="DarkBackgroundColor">#343434</Color>
 
     <!--  浅色  -->
     <SolidColorBrush x:Key="Primary">#FFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryForeground">#606266</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryBorderBrush">#DCDFE6</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryMouseOver">#EFEFFF</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryMouseOverForeground">#5B5BFA</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryMouseOverBorder">#CECEFE</SolidColorBrush>
-    
-    <!--  暗色  -->
+
+    <!--  默认浅色按钮样式  -->
+    <SolidColorBrush x:Key="Light">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="LightForeground">#606266</SolidColorBrush>
+    <SolidColorBrush x:Key="LightBorderBrush">#DCDFD6</SolidColorBrush>
+    <SolidColorBrush x:Key="LightMouseOver">#EFEFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="LightMouseOverForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="LightMouseOverBorderBrush">#CECEFE</SolidColorBrush>
+    <SolidColorBrush x:Key="LightPressed">#EFEFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="LightPressedForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="LightPressedBorderBrush">#5252E1</SolidColorBrush>
+
+    <!--  默认深色按钮样式  -->
     <SolidColorBrush x:Key="Dark">#5B5B5B</SolidColorBrush>
     <SolidColorBrush x:Key="DarkForeground">#E6E6E6</SolidColorBrush>
     <SolidColorBrush x:Key="DarkBorderBrush">#606060</SolidColorBrush>
     <SolidColorBrush x:Key="DarkMouseOver">#333333</SolidColorBrush>
-    <SolidColorBrush x:Key="DarkMouseOverForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkMouseOverForeground">#9D9DFC</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkMouseOverBorderBrush">#606060</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkPressed">#333333</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkPressedForeground">#9D9DFC</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkPressedBorderBrush">#606060</SolidColorBrush>
 
-    <!--  强调  -->
-    <SolidColorBrush x:Key="PrimaryAccent">#5B5BFA</SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryAccentForeground">#FFFFFF</SolidColorBrush>
+    <!--  自定义强调按钮样式  -->
+    <SolidColorBrush x:Key="Accent">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentForeground">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentBorderBrush">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentMouseOver">#EFEFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentMouseOverForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentMouseBorderBrush">#CECEFE</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentPressed">#EFEFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentPressedForeground">#5B5BFA</SolidColorBrush>
+    <SolidColorBrush x:Key="AccentPressedBorderBrush">#CECEFE</SolidColorBrush>
 
     <!--  默认按钮高度  -->
     <system:Double x:Key="PrimaryButtonHeight">28</system:Double>
-    <!--Opacity-->
+    <!--  Opacity  -->
     <system:Double x:Key="MouseOverOpacity">0.7</system:Double>
-    <system:Double x:Key="Opacity">1</system:Double>
+
+    <!--  Converters  -->
+    <converters:HalfTheSelfConverter x:Key="HalfTheSelfConverter" />
 </ResourceDictionary>

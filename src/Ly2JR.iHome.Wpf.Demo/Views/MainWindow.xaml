@@ -6,24 +6,30 @@
     xmlns:local="clr-namespace:Ly2JR.iHome.Wpf.Demo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Ly2JR.iHome.Wpf.Demo.ViewModels"
-    d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel,IsDesignTimeCreatable=True}"
     Title="MainWindow"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding MenuItems}" SelectedItem="{Binding CurrentMenuItem}" SelectedIndex="0"
-                 SelectionChanged="ListBox_SelectionChanged">
+        <ListBox
+            Grid.Column="0"
+            ItemsSource="{Binding MenuItems}"
+            SelectedIndex="0"
+            SelectedItem="{Binding CurrentMenuItem}"
+            SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" Margin="8,5" TextTrimming="CharacterEllipsis" > 
-                            
-                        </TextBlock>
+                        <TextBlock
+                            Margin="8,5"
+                            Text="{Binding Name}"
+                            TextTrimming="CharacterEllipsis" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -31,9 +37,12 @@
         <TabControl Grid.Column="1">
             <TabItem>
                 <TabItem.Header>
-                    <TextBlock Text="{Binding CurrentMenuItem.Name}"></TextBlock>
+                    <TextBlock Text="{Binding CurrentMenuItem.Name}" />
                 </TabItem.Header>
-                <ContentControl Content="{Binding CurrentMenuItem.Content}" HorizontalAlignment="Center" VerticalAlignment="Center"></ContentControl>
+                <ContentControl
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{Binding CurrentMenuItem.Content}" />
             </TabItem>
         </TabControl>
     </Grid>

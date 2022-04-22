@@ -1,0 +1,128 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ihome="clr-namespace:Ly2JR.iHome.Wpf">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Ly2JR.iHome.Wpf;component/Themes/Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--#region 普通按钮-->
+    <!--  浅色  -->
+    <Style
+        x:Key="LightButton"
+        BasedOn="{StaticResource IHomeAccentButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Light}" />
+        <Setter Property="Foreground" Value="{StaticResource LightForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource LightBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBackground" Value="{StaticResource LightMouseOver}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverForeground" Value="{StaticResource LightMouseOverForeground}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBorderBrush" Value="{StaticResource LightMouseOverBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.PressedBackground" Value="{StaticResource LightPressed}" />
+        <Setter Property="ihome:ButtonAssist.PressedForeground" Value="{StaticResource LightPressedForeground}" />
+        <Setter Property="ihome:ButtonAssist.PressedBorderBrush" Value="{StaticResource LightPressedBorderBrush}" />
+    </Style>
+
+    <!--  浅色强调  -->
+    <Style
+        x:Key="LightAccentButton"
+        BasedOn="{StaticResource IHomeButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentForeground}" />
+    </Style>
+
+    <!--  深色按钮  -->
+    <Style
+        x:Key="DarkButton"
+        BasedOn="{StaticResource IHomeAccentButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Dark}" />
+        <Setter Property="Foreground" Value="{StaticResource DarkForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DarkBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBackground" Value="{StaticResource DarkMouseOver}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverForeground" Value="{StaticResource DarkMouseOverForeground}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBorderBrush" Value="{StaticResource DarkMouseOverBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.PressedBackground" Value="{StaticResource DarkPressed}" />
+        <Setter Property="ihome:ButtonAssist.PressedForeground" Value="{StaticResource DarkPressedForeground}" />
+        <Setter Property="ihome:ButtonAssist.PressedBorderBrush" Value="{StaticResource DarkPressedBorderBrush}" />
+    </Style>
+
+    <!--  深色强调按钮  -->
+    <Style
+        x:Key="DarkAccentButton"
+        BasedOn="{StaticResource IHomeFlatButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentForeground}" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region 文字按钮-->
+    <!--  浅色文字按钮  -->
+    <Style
+        x:Key="LightTextButton"
+        BasedOn="{StaticResource IHomeTextButton}"
+        TargetType="{x:Type Button}" />
+
+    <!--  浅色文字强调按钮  -->
+    <Style
+        x:Key="LightAccentTextButton"
+        BasedOn="{StaticResource IHomeTextButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{StaticResource Accent}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverForeground" Value="{StaticResource Accent}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBorderBrush" Value="{StaticResource LightMouseOverBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.PressedBorderBrush" Value="{StaticResource Accent}" />
+    </Style>
+    <!--  深色文字按钮  -->
+    <Style
+        x:Key="DarkTextButton"
+        BasedOn="{StaticResource IHomeTextButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{StaticResource DarkForeground}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverForeground" Value="{StaticResource DarkMouseOverForeground}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBorderBrush" Value="{StaticResource DarkMouseOverBorderBrush}" />
+        <Setter Property="ihome:ButtonAssist.PressedBorderBrush" Value="{StaticResource DarkPressedBorderBrush}" />
+    </Style>
+    <!--  深色文字强调按钮  -->
+    <Style
+        x:Key="DarkAccentTextButton"
+        BasedOn="{StaticResource IHomeTextFlatButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{StaticResource AccentForeground}" />
+        <Setter Property="ihome:ButtonAssist.MouseOverBackground" Value="{StaticResource Dark}" />
+    </Style>
+    <!--#endregion-->
+
+    <!--  浅色圆点  -->
+    <Style
+        x:Key="LightCircleButton"
+        BasedOn="{StaticResource CircleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource LightBorderBrush}" />
+    </Style>
+    <!--  浅色强调圆点  -->
+    <Style
+        x:Key="LightAccentCircleButton"
+        BasedOn="{StaticResource CircleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Accent}" />
+    </Style>
+
+    <!--  深色圆点  -->
+    <Style
+        x:Key="DarkCircleButton"
+        BasedOn="{StaticResource CircleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource Primary}" />
+    </Style>
+    <!--  深色强调圆点  -->
+    <Style
+        x:Key="DarkAccentCircleButton"
+        BasedOn="{StaticResource CircleButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource DarkPressedBorderBrush}" />
+    </Style>
+</ResourceDictionary>
