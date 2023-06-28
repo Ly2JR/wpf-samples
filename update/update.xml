@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<update>
+	<file name="1" suffix="txt"/>
+	<file name="logo" suffix="png"/>
+	<file name="test" suffix="exe"/>
+	<logs>
+		<log>1.更新文件</log>
+		<log>2.更新压缩包</log>
+		<log>3.更新主程序</log>
+	</logs>
+</update>

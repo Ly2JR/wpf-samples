@@ -26,7 +26,7 @@ namespace download.ViewModels
         /// <summary>
         /// 默认下载地址
         /// </summary>
-        private const string BASEURL = "http://localhost:9090";
+        private const string BASEURL = "http://localhost:80";
         private const double ByteSize = 1024.00D;
         private const double KByteSize = 1024D * 1024D;
         private const int DEFAULT_BUFFER_SIZE = 1024 * 10;

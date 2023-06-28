@@ -42,6 +42,11 @@ namespace download.ViewModels
 
         private readonly IEventAggregator _ea;
 
+        public AboutViewModel()
+        {
+
+        }
+
         public AboutViewModel(IEventAggregator ea)
         {
             _ea = ea;
