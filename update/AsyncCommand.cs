@@ -28,7 +28,7 @@ namespace update
         }
         public override async Task ExecuteAsync(object? parameter)
         {
-            _canncelCommand.NotifyCommandFinished();
+            _canncelCommand.NotifyCommandStarting();
             Execution = new NotifyTaskCompletion<TResult>(_command(_canncelCommand.Token));
             RaiseCanExecuteChanged();
             await Execution.TaskCompletion;

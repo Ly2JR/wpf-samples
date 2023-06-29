@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:update"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="自动更新"
-    Width="400"
+    Width="580"
     Height="250"
     d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True,
                                      Type={x:Type local:MainWindowViewModel}}"
@@ -18,99 +18,104 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="3" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="3" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Margin="0,0,40,0">
-            <TextBlock>
-                <Run Text="文件名:" />
-                <Run Text="{Binding FileName}" />
-            </TextBlock>
-            <TextBlock HorizontalAlignment="Right">
-                <Run Text="{Binding CurrentLength}" />
-                <Run Text="/" />
-                <Run Text="{Binding FileLength}" />
-            </TextBlock>
-        </DockPanel>
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="地址:" />
+        <TextBox
+            Height="23"
+            Margin="40,0,40,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Text="{Binding UpdateUrl}" />
         <Button
-            Grid.Row="0"
             Width="30"
             HorizontalAlignment="Right"
             Command="{Binding RunCommand}"
             Content="Go" />
-        <ProgressBar
-            Grid.Row="2"
-            Height="20"
-            Maximum="{Binding MaxProgress}"
-            Minimum="0"
-            Value="{Binding CurrentProgress}" />
-        <ScrollViewer
-            x:Name="DescriptScrollViewer"
-            Grid.Row="4"
-            CanContentScroll="True">
+        <TextBlock Grid.Row="2" Text="{Binding Logs}" />
+        <ScrollViewer x:Name="DescriptScrollViewer" Grid.Row="4">
             <ItemsControl ItemsSource="{Binding Operations}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <!--<TextBlock Text="{Binding DataContext.Count, RelativeSource={RelativeSource AncestorType=Window, AncestorLevel=1, Mode=FindAncestor}}" />-->
-                            <!--  Busy indicator  -->
-                            <Label Content="{Binding LoadingMessage}" Visibility="{Binding Command.Execution.IsNotCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <!--  Results  -->
-                            <Label
-                                Content="{Binding FileName}"
-                                ContentStringFormat="{}{0}下载完成"
-                                Visibility="{Binding Command.Execution.IsSuccessfullyCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <!--  Error details  -->
-                            <Label
-                                Content="{Binding Command.Execution.ErrorMessage}"
-                                Foreground="Red"
-                                Visibility="{Binding Command.Execution.IsFaulted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <!--  Canceled  -->
-                            <Label
-                                Content="Canceled"
-                                Foreground="Blue"
-                                Visibility="{Binding Command.Execution.IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="5" />
+                            </Grid.ColumnDefinitions>
+                            <!--  文件名  -->
+                            <TextBlock
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="{Binding FileName}" />
+                            <!--  文件大小及进度条  -->
+                            <Grid Grid.Column="2">
+                                <ProgressBar
+                                    Height="20"
+                                    Maximum="{Binding MaxProgress}"
+                                    Minimum="0"
+                                    Value="{Binding CurrentProgress}" />
+                                <TextBlock VerticalAlignment="Center">
+                                    <Run Foreground="Cornsilk" Text="{Binding CurrentLength}" />
+                                    <Run Text="/" />
+                                    <Run Foreground="Red" Text="{Binding FileLength}" />
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <!--  下载状态  -->
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Text="{Binding LoadingMessage}"
+                                    Visibility="{Binding Command.Execution.IsNotCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <!--  Results  -->
+                                <TextBlock
+                                    Foreground="Orange"
+                                    Text="{Binding Command.Execution.Result}"
+                                    Visibility="{Binding Command.Execution.IsSuccessfullyCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <!--  Error details  -->
+                                <TextBlock
+                                    Foreground="Red"
+                                    Text="{Binding Command.Execution.ErrorMessage}"
+                                    Visibility="{Binding Command.Execution.IsFaulted, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <!--  Canceled  -->
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Foreground="Blue"
+                                    Text="已取消"
+                                    Visibility="{Binding Command.Execution.IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </Grid>
+                            <Grid Grid.Column="6" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                                    Grid.Column="0"
+                                    Width="75"
+                                    Command="{Binding Command.CancelCommand}"
+                                    Content="取消下载" />
+                                <Button
+                                    Grid.Column="2"
+                                    Width="75"
+                                    Command="{Binding RemoveCommand}"
+                                    Content="删除文件" />
+                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <!--<ItemsControl ItemsSource="{Binding Operations}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                              Busy indicator
-                            <Label Content="{Binding LoadingMessage}" Visibility="{Binding Command.Execution.IsNotCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                              Results
-                            <Label Content="{Binding Command.Execution.Result}" Visibility="{Binding Command.Execution.IsSuccessfullyCompleted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                              Error details
-                            <Label
-                                Content="{Binding Command.Execution.ErrorMessage}"
-                                Foreground="Red"
-                                Visibility="{Binding Command.Execution.IsFaulted, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                              Canceled
-                            <Label
-                                Content="Canceled"
-                                Foreground="Blue"
-                                Visibility="{Binding Command.Execution.IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                            <Button
-                                Width="75"
-                                Margin="0,0,30,0"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Command="{Binding Command.CancelCommand}"
-                                Content="Cancel" />
-                            <Button
-                                Width="25"
-                                HorizontalAlignment="Right"
-                                VerticalAlignment="Center"
-                                Command="{Binding RemoveCommand}"
-                                Content="X" />
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>-->
         </ScrollViewer>
     </Grid>
 </Window>
