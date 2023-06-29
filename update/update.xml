@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <update>
-	<file name="1" suffix="txt"/>
-	<file name="logo" suffix="png"/>
+	<file name="iisstart" suffix="htm"/>
+	<file name="iisstart" suffix="png"/>
 	<file name="test" suffix="exe"/>
 	<logs>
 		<log>1.更新文件</log>
