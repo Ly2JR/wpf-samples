@@ -155,7 +155,7 @@ namespace update
                                     }
                                     else
                                     {
-                                        CurrentLength = $"{startByte / Consts.KByteSize:F2}KB";
+                                        CurrentLength = $"{startByte / Consts.ByteSize:F2}KB";
                                         CurrentProgress = startByte / 1000;
                                     }
                                     await Task.Delay(1);

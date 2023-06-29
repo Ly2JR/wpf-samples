@@ -19,11 +19,11 @@ namespace update
         /// <summary>
         /// Byte字节大小
         /// </summary>
-        public const double ByteSize = 1024.00D;
+        public const int ByteSize = 1024;
         /// <summary>
         /// KByte字节大小
         /// </summary>
-        public const double KByteSize = 1024D * 1024D;
+        public const int KByteSize = 1024 * 1024;
         /// <summary>
         /// 默认缓存
         /// </summary>
