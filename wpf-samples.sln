@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ly2JR.iHome.Wpf", "src\Ly2J
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ly2JR.iHome.Wpf.Demo", "src\Ly2JR.iHome.Wpf.Demo\Ly2JR.iHome.Wpf.Demo.csproj", "{FF830F85-AE85-4420-9E82-4E7CBAFFF802}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "update", "update\update.csproj", "{56234AD7-69BC-428B-B992-67D59D738570}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "update", "src\update\update.csproj", "{56234AD7-69BC-428B-B992-67D59D738570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{F10D9070-6A20-40A4-AB19-802026016F9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{56234AD7-69BC-428B-B992-67D59D738570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56234AD7-69BC-428B-B992-67D59D738570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56234AD7-69BC-428B-B992-67D59D738570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F10D9070-6A20-40A4-AB19-802026016F9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F10D9070-6A20-40A4-AB19-802026016F9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F10D9070-6A20-40A4-AB19-802026016F9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F10D9070-6A20-40A4-AB19-802026016F9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{C8D49A0C-B0FA-429A-9F1A-45FDD52B2258} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 		{FF830F85-AE85-4420-9E82-4E7CBAFFF802} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 		{56234AD7-69BC-428B-B992-67D59D738570} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
+		{F10D9070-6A20-40A4-AB19-802026016F9D} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03DBFB9A-4E75-4822-9565-4FCCF44B33E7}

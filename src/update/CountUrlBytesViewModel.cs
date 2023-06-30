@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -87,6 +88,8 @@ namespace update
             await Task.Delay(TimeSpan.FromSeconds(3), token).ConfigureAwait(false);
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Accept.Clear();
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/octet-stream"));
                 using (var response = await httpClient.GetAsync(uri, token).ConfigureAwait(false))
                 {
                     if (!response.IsSuccessStatusCode) return response.StatusCode.ToString();
@@ -125,22 +128,15 @@ namespace update
                         {
                             using (var streamReader = new StreamReader(stream))
                             {
-                                var bufferByte = new byte[Consts.DEFAULT_BUFFER_SIZE];
+                                byte[] bufferByte = new byte[Consts.DEFAULT_BUFFER_SIZE];
                                 int startByte = 0;
                                 var downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length, token);
                                 while (downByte > 0)
                                 {
                                     fileStream.Position = startByte;
-                                    if (downByte < Consts.DEFAULT_BUFFER_SIZE)
-                                    {
-                                        var smallBufferByte = new byte[downByte];
-                                        await fileStream.WriteAsync(smallBufferByte, 0, smallBufferByte.Length, token);
-                                    }
-                                    else
-                                    {
-                                        await fileStream.WriteAsync(bufferByte, 0, bufferByte.Length, token);
-                                    }
-                                    
+
+                                    await fileStream.WriteAsync(bufferByte, 0, downByte, token);
+
                                     startByte += downByte;
 
                                     if (startByte < Consts.ByteSize)
@@ -158,11 +154,12 @@ namespace update
                                         CurrentLength = $"{startByte / Consts.ByteSize:F2}KB";
                                         CurrentProgress = startByte / 1000;
                                     }
+                                    
                                     await Task.Delay(1);
-                                    downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length);
+                                    downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length, token);
                                 }
                             }
-                            fileStream.Flush(true);
+                            await fileStream.FlushAsync();
                         }
                         CurrentProgress = MaxProgress;
                     }
