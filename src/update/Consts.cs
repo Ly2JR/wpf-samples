@@ -28,5 +28,16 @@ namespace update
         /// 默认缓存
         /// </summary>
         public const int DEFAULT_BUFFER_SIZE = 1024 * 10;
+
+        /// <summary>
+        /// 自动下载
+        /// </summary>
+        public const string AutoDownloadArg = "adl";
+        /// <summary>
+        /// 自动运行,启动程序后关闭自身
+        /// </summary>
+        public const string AutoRunArg = "ar";
+        public static bool AutoDownLoad = false;
+        public static bool AutoRun = false;
     }
 }

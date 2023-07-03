@@ -23,7 +23,7 @@ namespace update
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(DescriptScrollViewer); ;
+            this.DataContext = new MainWindowViewModel(); ;
         }
     }
 }

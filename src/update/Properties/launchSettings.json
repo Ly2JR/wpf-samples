@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "update": {
+      "commandName": "Project",
+      "commandLineArgs": "adl"
+    }
+  }
+}

@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
             var info = new ProcessStartInfo
             {
                 FileName = AppDomain.CurrentDomain.BaseDirectory + "/update.exe",
-                Arguments = $"auto"
+                Arguments = $"adl"
             };
             Process.Start(info);
 

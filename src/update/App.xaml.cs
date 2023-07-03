@@ -13,5 +13,15 @@ namespace update
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            if (e.Args != null && e.Args.Length>0)
+            {
+                var args = e.Args;
+                Consts.AutoDownLoad = args.Contains(Consts.AutoDownloadArg);
+            }
+            base.OnStartup(e);
+        }
     }
 }

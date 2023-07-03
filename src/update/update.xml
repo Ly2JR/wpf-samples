@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <update>
-	<file name="iisstart" suffix="htm"/>
-	<file name="iisstart" suffix="png"/>
-	<file name="test" suffix="exe"/>
+	<file name="iisstart" suffix="htm" delete="1" autorun="0"/>
+	<file name="iisstart" suffix="png" delete="1" autorun="0"/>
+	<file name="test" suffix="exe" delete="1" autorun="0"/>
 	<logs>
 		<log>1.更新文件</log>
 		<log>2.更新压缩包</log>

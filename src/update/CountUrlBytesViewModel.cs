@@ -69,19 +69,20 @@ namespace update
 
         private string _name;
         private string _fileSuffix;
-
-        public CountUrlBytesViewModel(MainWindowViewModel parent, string name,string suffix)
+        private MainWindowViewModel _parent;
+        public CountUrlBytesViewModel(MainWindowViewModel parent, string name,string suffix,bool deleteOld=false)
         {
+            _parent = parent;
             _fileSuffix = suffix;
             _name = name;
             FileName = $"{_name}.{_fileSuffix}";
             LoadingMessage = $"正在下载";
-            Command = AsyncCommand.Create(token => DownloadAndCountBytesAsync(_name, _fileSuffix, token));
+            Command = AsyncCommand.Create(token => DownloadAndCountBytesAsync(_name, _fileSuffix, token, deleteOld));
             Command.Execute(null);
             RemoveCommand = new DelegateComand(() => parent.Operations.Remove(this));
         }
 
-        private async Task<string> DownloadAndCountBytesAsync(string name,string suffix,CancellationToken token = new CancellationToken())
+        private async Task<string> DownloadAndCountBytesAsync(string name,string suffix,CancellationToken token = new CancellationToken(),bool deleteOld=false)
         {
             var searchPattern = $"{name}*{suffix}";
             Uri uri = new Uri($"{Consts.BaseUrl}{name}.{suffix}");
@@ -113,13 +114,21 @@ namespace update
                     }
 
                     var savePath = Environment.CurrentDirectory;
-                    var files = Directory.GetFiles(savePath, searchPattern, SearchOption.TopDirectoryOnly);
-                    var hasFiles = files.Count();
                     var saveFileName = FileName;
-                    if (hasFiles > 0)
+                    if (!deleteOld)
                     {
-                        saveFileName = $"{name}({hasFiles}).{suffix}";
+                        var files = Directory.GetFiles(savePath, searchPattern, SearchOption.TopDirectoryOnly);
+                        var hasFiles = files.Count();
+                        if (hasFiles > 0)
+                        {
+                            saveFileName = $"{name}({hasFiles}).{suffix}";
+                        }
                     }
+                    else
+                    {
+                        File.Delete($"{savePath}/{FileName}");
+                    }
+                   
                     savePath += $"/{saveFileName}";
                     var stream = await response.Content.ReadAsStreamAsync(token).ConfigureAwait(false);
                     if (stream != null)
@@ -159,9 +168,10 @@ namespace update
                                     downByte = await stream.ReadAsync(bufferByte, 0, bufferByte.Length, token);
                                 }
                             }
-                            await fileStream.FlushAsync();
+                            await fileStream.FlushAsync(token);
                         }
                         CurrentProgress = MaxProgress;
+                        _parent.FinishedList.Add(savePath);
                     }
                 }
             }
