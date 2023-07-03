@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ly2JR.iHome.Wpf.Demo", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "update", "src\update\update.csproj", "{56234AD7-69BC-428B-B992-67D59D738570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{F10D9070-6A20-40A4-AB19-802026016F9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "src\WindowsFormsApp1\WindowsFormsApp1.csproj", "{F10D9070-6A20-40A4-AB19-802026016F9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
