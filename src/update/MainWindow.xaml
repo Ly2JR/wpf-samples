@@ -59,6 +59,11 @@
                                 Grid.Column="0"
                                 VerticalAlignment="Center"
                                 Text="{Binding FileName}" />
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="60,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding ConsumingTime}" />
                             <!--  文件大小及进度条  -->
                             <Grid Grid.Column="2">
                                 <ProgressBar

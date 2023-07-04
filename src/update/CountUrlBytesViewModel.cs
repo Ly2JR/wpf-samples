@@ -22,7 +22,20 @@ namespace update
         private string _fileLength = "0";
         private string _currentLength = "0";
         private string _speed = "0B/s";
+        private string _consumingTime = "0";
         private DateTime _lastTime;
+
+        /// <summary>
+        /// 耗时
+        /// </summary>
+        public string ConsumingTime
+        {
+            get { return _consumingTime; }
+            set { _consumingTime = value;OnPropertyChanged(); }
+        }
+        /// <summary>
+        /// 下载速度
+        /// </summary>
         public string Speed
         {
             get { return _speed; }
@@ -214,6 +227,8 @@ namespace update
                     }
                 }
             }
+            ConsumingTime = $"{(DateTime.Now - _lastTime).Minutes}分钟{(DateTime.Now - _lastTime).Seconds}秒";
+
             return $"{FileName}下载完成";
         }
 
