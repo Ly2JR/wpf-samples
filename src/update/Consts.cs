@@ -19,11 +19,16 @@ namespace update
         /// <summary>
         /// Byte字节大小
         /// </summary>
-        public const int ByteSize = 1024;
+        public const int KByteSize = 1024;
         /// <summary>
-        /// KByte字节大小
+        /// MByte字节大小
         /// </summary>
-        public const int KByteSize = 1024 * 1024;
+        public const int MByteSize = KByteSize * 1024;
+
+        /// <summary>
+        /// GByte字节大小
+        /// </summary>
+        public const int GByteSize = MByteSize * 1024;
         /// <summary>
         /// 默认缓存
         /// </summary>

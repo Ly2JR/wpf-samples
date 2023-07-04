@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:update"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="自动更新"
-    Width="580"
+    Width="780"
     Height="250"
     d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True,
                                      Type={x:Type local:MainWindowViewModel}}"
@@ -45,7 +45,7 @@
                     <DataTemplate>
                         <Grid Grid.Row="4">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="3*" />
                                 <ColumnDefinition Width="5" />
@@ -70,6 +70,8 @@
                                     <Run Foreground="Cornsilk" Text="{Binding CurrentLength}" />
                                     <Run Text="/" />
                                     <Run Foreground="Red" Text="{Binding FileLength}" />
+                                    <Run Text="" />
+                                    <Run Foreground="Purple" Text="{Binding Speed}" />
                                 </TextBlock>
                             </Grid>
                             <Grid Grid.Column="4">

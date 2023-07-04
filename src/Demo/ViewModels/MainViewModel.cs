@@ -10,6 +10,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -43,6 +44,16 @@ namespace Demo.ViewModels
             TreeMenuData = new ObservableCollection<TreeMenu>();
             //
             LoadDb();
+            //检查文件更新
+            Task.Factory.StartNew(() =>
+            {
+                var info = new ProcessStartInfo
+                {
+                    FileName = AppDomain.CurrentDomain.BaseDirectory + "/update.exe",
+                    Arguments = $"adl"
+                };
+                var p= Process.Start(info);
+            });
         }
 
         private void OpenTabItem(string menuCode)
