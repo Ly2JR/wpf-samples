@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "update", "src\update\update
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "src\WindowsFormsApp1\WindowsFormsApp1.csproj", "{F10D9070-6A20-40A4-AB19-802026016F9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteDbs", "src\SqliteDbs\SqliteDbs.csproj", "{B5E68184-05F1-4ED2-9F8E-4EC2F316261E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{F10D9070-6A20-40A4-AB19-802026016F9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F10D9070-6A20-40A4-AB19-802026016F9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F10D9070-6A20-40A4-AB19-802026016F9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E68184-05F1-4ED2-9F8E-4EC2F316261E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E68184-05F1-4ED2-9F8E-4EC2F316261E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E68184-05F1-4ED2-9F8E-4EC2F316261E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E68184-05F1-4ED2-9F8E-4EC2F316261E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{FF830F85-AE85-4420-9E82-4E7CBAFFF802} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 		{56234AD7-69BC-428B-B992-67D59D738570} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 		{F10D9070-6A20-40A4-AB19-802026016F9D} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
+		{B5E68184-05F1-4ED2-9F8E-4EC2F316261E} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03DBFB9A-4E75-4822-9565-4FCCF44B33E7}

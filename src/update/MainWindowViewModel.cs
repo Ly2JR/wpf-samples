@@ -67,6 +67,7 @@ namespace update
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
+                if (!autoRun) return;
                 if (FinishedList.Count == Operations.Count)
                 {
                     Thread.Sleep(1500);
