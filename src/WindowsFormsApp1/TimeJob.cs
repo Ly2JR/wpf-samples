@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
             _logger = logger;
         }
 
-
         public void Dispose()
         {
             Console.WriteLine($"{DateTime.Now}执行完同步作业");

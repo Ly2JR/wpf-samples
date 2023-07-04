@@ -14,8 +14,6 @@ namespace WindowsFormsApp1
 {
     public static class ConfigService
     {
-
-
         public static IServiceProvider BuildWinform(this IServiceCollection services)
         {
             services.AddScoped<FrmLogin>();
@@ -53,7 +51,7 @@ namespace WindowsFormsApp1
                 q.SchedulerId = "Scheduler-Core";
                 q.UseMicrosoftDependencyInjectionJobFactory();
                 q.ScheduleJob<TimeJob>(trigger => trigger
-                .WithIdentity("userJobTrigger")
+                .WithIdentity("TimeJobTrigger")
                 .StartNow()
                 .WithDailyTimeIntervalSchedule(x => x.WithInterval(options.JobTimeInterval, IntervalUnit.Minute))
                 );

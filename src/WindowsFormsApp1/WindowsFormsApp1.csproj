@@ -229,7 +229,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SqliteDbs\SqliteDbs.csproj">
+    <ProjectReference Include="..\SqliteDbs\SqliteDbs.csproj">
       <Project>{b5e68184-05f1-4ed2-9f8e-4ec2f316261e}</Project>
       <Name>SqliteDbs</Name>
     </ProjectReference>

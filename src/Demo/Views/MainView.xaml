@@ -1,0 +1,43 @@
+﻿<Window
+    x:Class="Demo.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:views="clr-namespace:Demo.Views"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <HierarchicalDataTemplate x:Key="TreeItemStyle" ItemsSource="{Binding Children}">
+            <Grid>
+                <StackPanel x:Name="ParentMenu" Visibility="{Binding IsGrouping, Converter={StaticResource BoolToVisible}}">
+                    <TextBlock Text="{Binding MenuName}" />
+                </StackPanel>
+                <Button
+                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeView}}, Path=DataContext.NavigateCommand}"
+                    CommandParameter="{Binding MenuCode}"
+                    Visibility="{Binding Visibility, ElementName=ParentMenu, Converter={StaticResource VisibleToReverse}}">
+                    <StackPanel>
+                        <TextBlock Text="{Binding MenuName}" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TreeView
+            Grid.Column="0"
+            ItemTemplate="{StaticResource TreeItemStyle}"
+            ItemsSource="{Binding TreeMenuData}" />
+        <TabControl Grid.Column="1" prism:RegionManager.RegionName="TabRegion" />
+    </Grid>
+</Window>
