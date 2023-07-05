@@ -30,7 +30,7 @@ namespace update
             RunCommand = new DelegateComand(Run);
 
             //自动运行
-            if (Consts.AutoDownLoad)
+            if (Consts.CAN_AUTO_DOWNLOAD)
             {
                 Task.Factory.StartNew(Run);
             }
@@ -55,28 +55,38 @@ namespace update
            
             foreach (XmlNode file in files)
             {
-                name = file.Attributes["name"].Value;
-                suffix = file.Attributes["suffix"].Value;
-                var deleteOld = file.Attributes["delete"].Value.Equals("1");
-                autoRun = file.Attributes["autorun"].Value.Equals("1");
-                Operations.Add(new CountUrlBytesViewModel(this, name, suffix, deleteOld));
+                if (file.Attributes == null) continue;
+                var dic=new Dictionary<string, string>();
+                foreach(XmlAttribute att in file.Attributes)
+                {
+                    dic.Add(att.Name, att.Value);
+                }
+                Operations.Add(new CountUrlBytesViewModel(this, dic));
             }
         }
 
-        private void FinishedList_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private async void FinishedList_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
-                if (!autoRun) return;
-                if (FinishedList.Count == Operations.Count)
+                if (Consts.CAN_EXIT)
                 {
-                    Thread.Sleep(1500);
-                    var info = new ProcessStartInfo
-                    {
-                        FileName = $"{AppDomain.CurrentDomain.BaseDirectory}/{name}.{suffix}",
-                    };
-                    Process.Start(info);
+                    await Task.Delay(1600);
                     Environment.Exit(0);
+                }
+                //只有exe文件并且自动运行才有效
+                if (autoRun && suffix == "exe")
+                {
+                    if (FinishedList.Count == Operations.Count)
+                    {
+                        Thread.Sleep(1500);
+                        var info = new ProcessStartInfo
+                        {
+                            FileName = $"{AppDomain.CurrentDomain.BaseDirectory}/{name}.{suffix}",
+                        };
+                        Process.Start(info);
+                        Environment.Exit(0);
+                    }
                 }
             }
         }

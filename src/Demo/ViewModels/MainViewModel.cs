@@ -16,6 +16,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml;
 
 namespace Demo.ViewModels
 {
@@ -34,43 +35,41 @@ namespace Demo.ViewModels
         private readonly IEventAggregator _e;
         public DelegateCommand<string> NavigateCommand { get; }
         private readonly IDictionary<string, Type> _compsCache = new ConcurrentDictionary<string, Type>();
+        private List<SubSystem> _defaultSubs;
+        private List<SubMenu> _defaultMenus;
+        private List<MenuLink> _defautlLinks;
         public MainViewModel(IContainerProvider container, IRegionManager regionManager, IModuleManager moduleManager, IEventAggregator ea)
         {
             _c = container;
             _r = regionManager;
             _m = moduleManager;
             _e = ea;
+            _defaultSubs = container.Resolve<List<SubSystem>>(nameof(SubSystem));
+            _defaultMenus = container.Resolve<List<SubMenu>>(nameof(SubMenu));
+            _defautlLinks = container.Resolve<List<MenuLink>>(nameof(MenuLink));
             NavigateCommand = new DelegateCommand<string>(OpenTabItem);
             TreeMenuData = new ObservableCollection<TreeMenu>();
             //
             LoadDb();
-            //检查文件更新
-            Task.Factory.StartNew(() =>
-            {
-                var info = new ProcessStartInfo
-                {
-                    FileName = AppDomain.CurrentDomain.BaseDirectory + "/update.exe",
-                    Arguments = $"adl"
-                };
-                var p= Process.Start(info);
-            });
+
         }
 
         private void OpenTabItem(string menuCode)
         {
             if (string.IsNullOrEmpty(menuCode)) return;
-            var openMenu = DefaultMenus.FirstOrDefault(o => o.MenuCode == menuCode);
+            var openMenu = _defaultMenus.FirstOrDefault(o => o.MenuCode == menuCode);
             if (openMenu == null)
             {
                 MessageBox.Show("菜单不存在");
                 return;
             }
-            var menuLink = DefautlLinks.FirstOrDefault(o => o.MenuCode == menuCode);
+            var menuLink = _defautlLinks.OrderByDescending(o => o.Version).FirstOrDefault(o => o.MenuCode == menuCode);
             if (menuLink == null)
             {
                 MessageBox.Show("未配置文件");
                 return;
             }
+            //加载DLL
             var moduleExist = _m.ModuleExists(menuCode);
             if (!moduleExist)
             {
@@ -100,7 +99,7 @@ namespace Demo.ViewModels
 
         private void LoadComponent(string menuCode)
         {
-            var link = DefautlLinks.FirstOrDefault(it => it.MenuCode == menuCode);
+            var link = _defautlLinks.FirstOrDefault(it => it.MenuCode == menuCode);
             if (link == null) return;
             Type? type = null;
             if (!_compsCache.ContainsKey(link.Assembly))
@@ -124,71 +123,20 @@ namespace Demo.ViewModels
             LoadModule(menuCode);
         }
 
-        private List<SubSystem> DefaultSubs;
-        private List<SubMenu> DefaultMenus;
-        private List<MenuLink> DefautlLinks;
+       
 
         /// <summary>
         /// 数据库表实体
         /// </summary>
         private void LoadDb()
         {
-            #region 模拟从数据库查询的数据
-            DefaultSubs = new List<SubSystem>
-            {
-                new SubSystem() {SubCode = "AA", SubName = "A模块", Order = 1},
-                new SubSystem() {SubCode = "SS", SubName = "B模块", Order = 2},
-            };
-            DefaultMenus = new List<SubMenu>
-            {
-                new SubMenu()
-                {
-                    SubCode = "AA", MenuCode = "AA01", MenuName = "test1", SupMenuCode = "AA", Grade = 1,Order = 1, EndGrade = true
-                },
-                new SubMenu()
-                {
-                    SubCode = "AA", MenuCode = "AA02", MenuName = "test2", SupMenuCode = "AA", Grade = 1,Order = 2, EndGrade = true
-                },
-
-                new SubMenu()
-                {
-                    SubCode = "SS", MenuCode = "SS01", MenuName = "test3", SupMenuCode = "SS", Grade = 1,Order = 1, EndGrade = false
-                },
-                new SubMenu()
-                {
-                    SubCode = "SS", MenuCode = "SS0101", MenuName = "test4", SupMenuCode = "SS01", Grade = 2,Order = 1, EndGrade = false
-                },
-                  new SubMenu()
-                {
-                    SubCode = "SS", MenuCode = "SS010101", MenuName = "test5", SupMenuCode = "SS0101", Grade = 3,Order = 1, EndGrade = true
-                },
-                    new SubMenu()
-                {
-                    SubCode = "SS", MenuCode = "SS010102", MenuName = "test6", SupMenuCode = "SS0101", Grade = 3,Order = 2, EndGrade = true
-                },
-           };
-
-
-            DefautlLinks = new List<MenuLink>(){ new MenuLink()
-            {
-                MenuCode="AA01",
-                Assembly = "Demo.Plugin",
-                Class = "Demo.Plugin.Entry",
-            },new MenuLink()
-            {
-                MenuCode="SS010101",
-                Assembly = "Demo.Plugin",
-                Class = "Demo.Plugin.Entry",
-            } };
-            #endregion;
-
             #region 将数据库实体转换菜单树
 
             //模块
-            foreach (var sub in DefaultSubs)
+            foreach (var sub in _defaultSubs)
             {
                 TreeMenu subTree = null;
-                IterationMenu(DefaultMenus, ref subTree, sub, 1);
+                IterationMenu(_defaultMenus, ref subTree, sub, 1);
                 if (subTree != null)
                 {
                     _treeMenu.Add(subTree);

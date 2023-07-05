@@ -19,7 +19,7 @@ namespace update
             if (e.Args != null && e.Args.Length>0)
             {
                 var args = e.Args;
-                Consts.AutoDownLoad = args.Contains(Consts.AutoDownloadArg);
+                Consts.CAN_AUTO_DOWNLOAD = args.Contains(Consts.EXE_AUTODOWNLOAD_ARG);
             }
             base.OnStartup(e);
         }

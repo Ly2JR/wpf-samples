@@ -47,25 +47,26 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="5" />
-                                <ColumnDefinition Width="3*" />
-                                <ColumnDefinition Width="5" />
-                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="3*" />
                                 <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3*" />
                             </Grid.ColumnDefinitions>
                             <!--  文件名  -->
                             <TextBlock
                                 Grid.Column="0"
                                 VerticalAlignment="Center"
                                 Text="{Binding FileName}" />
+                            <!--  耗时  -->
                             <TextBlock
-                                Grid.Column="0"
-                                Margin="60,0,0,0"
+                                Grid.Column="2"
                                 VerticalAlignment="Center"
                                 Text="{Binding ConsumingTime}" />
                             <!--  文件大小及进度条  -->
-                            <Grid Grid.Column="2">
+                            <Grid Grid.Column="4">
                                 <ProgressBar
                                     Height="20"
                                     Maximum="{Binding MaxProgress}"
@@ -79,7 +80,7 @@
                                     <Run Foreground="Purple" Text="{Binding Speed}" />
                                 </TextBlock>
                             </Grid>
-                            <Grid Grid.Column="4">
+                            <Grid Grid.Column="6">
                                 <!--  下载状态  -->
                                 <TextBlock
                                     VerticalAlignment="Center"
@@ -102,7 +103,7 @@
                                     Text="已取消"
                                     Visibility="{Binding Command.Execution.IsCanceled, Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </Grid>
-                            <Grid Grid.Column="6" HorizontalAlignment="Left">
+                            <Grid Grid.Column="8" HorizontalAlignment="Left">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="10" />

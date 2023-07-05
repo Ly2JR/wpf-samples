@@ -2,6 +2,7 @@
 <update>
 	<file name="iisstart" suffix="htm" delete="1" autorun="0"/>
 	<file name="iisstart" suffix="png" delete="1" autorun="0"/>
+	<file name="Demo.Plugin" suffix="dll" delete="1" autorun="0" exit="1" version="1.0.0.1"/>
 	<file name="test" suffix="exe" delete="1" autorun="0"/>
 	<logs>
 		<log>1.更新文件</log>

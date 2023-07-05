@@ -13,5 +13,7 @@ namespace Demo.Entities
         public string Class { get; set; }
 
         public string Assembly { get; set; }
+
+        public string Version { get; set; }
     }
 }
