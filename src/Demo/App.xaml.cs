@@ -21,8 +21,6 @@ namespace Demo
     /// </summary>
     public partial class App : PrismApplication
     {
-
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterInstance<List<SubSystem>>(Consts.DefaultSubs,nameof(SubSystem));

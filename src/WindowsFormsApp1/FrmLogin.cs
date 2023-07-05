@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
+
     public partial class FrmLogin : Form
     {
         public FrmLogin()
@@ -32,5 +34,12 @@ namespace WindowsFormsApp1
             Environment.Exit(0);
 
         }
-    }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+}
 }
