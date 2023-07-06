@@ -1,6 +1,7 @@
 Type=Exe
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Reference=*\G{CF2B9933-3756-443D-BF67-F5CFFEB11629}#1.0#0#DemoWin.Plugin.tlb#DemoWin_Plugin
+Reference=*\G{77DA2684-E0C2-3340-B1F8-7D7FC6E62F20}#1.0#0#DemoCore.Plugin.tlb#DemoCore_Plugin
 Form=Form1.frm
 Startup="Form1"
 ExeName32="¹¤³Ì1.exe"

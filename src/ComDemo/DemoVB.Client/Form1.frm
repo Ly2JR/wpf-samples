@@ -9,6 +9,14 @@ Begin VB.Form Form1
    ScaleHeight     =   3015
    ScaleWidth      =   4560
    StartUpPosition =   3  '窗口缺省
+   Begin VB.CommandButton Command2 
+      Caption         =   "启动DemoCore.Plugin"
+      Height          =   495
+      Left            =   360
+      TabIndex        =   1
+      Top             =   1200
+      Width           =   3375
+   End
    Begin VB.CommandButton Command1 
       Caption         =   "启动DemoWin.Plugin"
       Height          =   495
@@ -33,4 +41,15 @@ Dim obj As Object
 Set obj = CreateObject("DemoWin.Plugin.Server")
 obj.startwin
 
+Set obj = Nothing
+
+End Sub
+
+Private Sub Command2_Click()
+Dim obj As Object
+
+Set obj = CreateObject("DemoWin.Plugin.Server")
+obj.StartWpfCore
+
+Set obj = Nothing
 End Sub
