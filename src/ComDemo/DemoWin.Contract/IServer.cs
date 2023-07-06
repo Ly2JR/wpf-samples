@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DemoWin.Contract
 {
     [ComVisible(true)]
-    [Guid(ContractGuids.ServerInferface)]
+    [Guid(ContractGuids.ServerInterface)]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IServer
     {

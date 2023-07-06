@@ -3,10 +3,10 @@
 namespace DemoCore.Contract
 {
     [ComVisible(true)]
-    [Guid(ContractGuids.ServerInferface)]
+    [Guid(ContractGuids.ServerInterface)]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IServer
     {
-        void StartCore();
+        System.Windows.Window StartCore();
     }
 }
