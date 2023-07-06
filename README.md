@@ -23,3 +23,7 @@ SqlSugar的CodeFirst配置类库
 1. 实现Winform的IOC功能，依赖`SqliteDbs`
 2. 实现Winform更新本身，依赖`update`
 
+`ComDemo`是Com互调示例
+
+`Win`：NET Framework
+`Core`:NET Core

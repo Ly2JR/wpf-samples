@@ -23,13 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Plugin", "src\Demo.Plu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ComDemo", "ComDemo", "{C75CF17B-A518-46FA-A2EA-4E9EEC643C72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Contract", "DemoWin.Contract\DemoWin.Contract.csproj", "{90F48E14-E755-4870-88D1-23B67AFEC0DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Contract", "src\ComDemo\DemoWin.Contract\DemoWin.Contract.csproj", "{90F48E14-E755-4870-88D1-23B67AFEC0DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Contract", "DemoCore.Contract\DemoCore.Contract.csproj", "{83230259-7531-4EE2-A687-D8A262BE8A96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Contract", "src\ComDemo\DemoCore.Contract\DemoCore.Contract.csproj", "{83230259-7531-4EE2-A687-D8A262BE8A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Plugin", "DemoWin.Plugin\DemoWin.Plugin.csproj", "{CF2B9933-3756-443D-BF67-F5CFFEB11629}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Plugin", "src\ComDemo\DemoWin.Plugin\DemoWin.Plugin.csproj", "{CF2B9933-3756-443D-BF67-F5CFFEB11629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Client", "DemoWin.Client\DemoWin.Client.csproj", "{2E019E4B-9B23-457C-8EE7-67CD1397466A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Client", "src\ComDemo\DemoWin.Client\DemoWin.Client.csproj", "{2E019E4B-9B23-457C-8EE7-67CD1397466A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
