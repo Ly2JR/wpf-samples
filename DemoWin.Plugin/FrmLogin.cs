@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace DemoWin.Plugin
 {
-
     public partial class FrmLogin : Form
     {
         public FrmLogin()
@@ -22,10 +28,6 @@ namespace WindowsFormsApp1
             Process.Start(info);
 
             Environment.Exit(0);
-
         }
-
     }
-
-   
 }

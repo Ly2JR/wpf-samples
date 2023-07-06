@@ -1,21 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-	  <EnableComHosting>true</EnableComHosting>
+	<EnableComHosting>true</EnableComHosting>
+	<EnableRegFreeCom>true</EnableRegFreeCom>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.0.1</FileVersion>
-	<EnableRegFreeCom Condition="'$(RegFree)' == 'True'">True</EnableRegFreeCom>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Demo.Shell\Demo.Shell.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Demo.Shell;
+﻿using DemoWin.Contract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +6,16 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Plugin
+namespace DemoWin.Plugin
 {
     [ComVisible(true)]
     [Guid(ContractGuids.ServerClass)]
     public class Server : IServer
     {
-        public void Start()
+        public void StartWin()
         {
-            var main = new Window1();
-            main.Show();
+            var login=new FrmLogin();
+            login.ShowDialog();
         }
     }
 }
