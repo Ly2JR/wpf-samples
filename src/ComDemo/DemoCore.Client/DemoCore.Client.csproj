@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ComDemo\DemoCore.Contract\DemoCore.Contract.csproj" />
+    <ProjectReference Include="..\DemoCore.Contract\DemoCore.Contract.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-	  <UseWPF>true</UseWPF>
-	  <EnableRegFreeCom>true</EnableRegFreeCom>
-	  <EnableComHosting>true</EnableComHosting>
-    <Nullable>enable</Nullable>
+    <TargetFrameworks>net7.0-windows;net48</TargetFrameworks>
+	<UseWPF>true</UseWPF>
   </PropertyGroup>
 
 </Project>

@@ -8,5 +8,7 @@ namespace DemoCore.Contract
     public interface IServer
     {
         System.Windows.Window StartCore();
+
+        int Sum(int a, int b);
     }
 }

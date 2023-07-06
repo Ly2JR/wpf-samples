@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-windows;net48</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+	<EnableRegFreeCom>true</EnableRegFreeCom>
+	<EnableComHosting>true</EnableComHosting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoCore.Contract\DemoCore.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

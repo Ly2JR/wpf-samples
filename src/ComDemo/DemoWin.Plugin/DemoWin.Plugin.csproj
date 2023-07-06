@@ -59,6 +59,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DemoCore.Contract\DemoCore.Contract.csproj">
+      <Project>{83230259-7531-4ee2-a687-d8a262be8a96}</Project>
+      <Name>DemoCore.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DemoWin.Contract\DemoWin.Contract.csproj">
       <Project>{90f48e14-e755-4870-88d1-23b67afec0df}</Project>
       <Name>DemoWin.Contract</Name>

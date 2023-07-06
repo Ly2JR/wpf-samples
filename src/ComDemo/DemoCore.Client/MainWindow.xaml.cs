@@ -30,8 +30,8 @@ namespace DemoCore.Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var s = new Server();
-            var mainView= s.StartCore();
+            var caller = new Server();
+            var mainView= caller.StartCore();
             mainView.ShowDialog();
             Application.Current.MainWindow = mainView;
         }

@@ -31,9 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Plugin", "src\ComDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWin.Client", "src\ComDemo\DemoWin.Client\DemoWin.Client.csproj", "{2E019E4B-9B23-457C-8EE7-67CD1397466A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Plugin", "DemoCore.Plugin\DemoCore.Plugin.csproj", "{A4B25696-6115-4914-B938-8BAAAEC46681}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Plugin", "src\ComDemo\DemoCore.Plugin\DemoCore.Plugin.csproj", "{A4B25696-6115-4914-B938-8BAAAEC46681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Client", "DemoCore.Client\DemoCore.Client.csproj", "{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCore.Client", "src\ComDemo\DemoCore.Client\DemoCore.Client.csproj", "{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
