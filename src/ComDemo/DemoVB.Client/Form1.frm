@@ -1,14 +1,14 @@
 VERSION 5.00
 Begin VB.Form Form1 
    Caption         =   "Form1"
-   ClientHeight    =   3015
+   ClientHeight    =   2160
    ClientLeft      =   120
    ClientTop       =   465
-   ClientWidth     =   4560
+   ClientWidth     =   4410
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3015
-   ScaleWidth      =   4560
-   StartUpPosition =   3  '窗口缺省
+   ScaleHeight     =   2160
+   ScaleWidth      =   4410
+   StartUpPosition =   2  '屏幕中心
    Begin VB.CommandButton Command2 
       Caption         =   "启动DemoCore.Plugin"
       Height          =   495
@@ -32,7 +32,9 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command1_Click()
+On Error GoTo ErrHandler:
 Dim obj As Object
+Hide
 '方式一：引用
 'Set obj = New DemoWin_Plugin.Server
 'obj.startwin
@@ -40,16 +42,29 @@ Dim obj As Object
 '方式二：反射
 Set obj = CreateObject("DemoWin.Plugin.Server")
 obj.startwin
+    Set obj = Nothing
+    Unload Me
+finally:
 
-Set obj = Nothing
-
+    End
+ErrHandler:
+GoTo finally
 End Sub
 
 Private Sub Command2_Click()
+On Error GoTo ErrHandler:
 Dim obj As Object
 
-Set obj = CreateObject("DemoWin.Plugin.Server")
-obj.StartWpfCore
+Hide
 
-Set obj = Nothing
+Set obj = CreateObject("DemoCore.Plugin.Server")
+obj.StartWpf
+ Set obj = Nothing
+    Unload Me
+finally:
+   
+    End
+ErrHandler:
+GoTo finally
 End Sub
+

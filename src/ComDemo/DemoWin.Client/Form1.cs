@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Packaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -45,6 +46,12 @@ namespace DemoWin.Client
             ////失败
             //DemoCore.Contract.IServer b = new ServerProxy();
             //MessageBox.Show(b.Sum(2, 5).ToString());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
+            Environment.Exit(0);
         }
     }
 

@@ -12,9 +12,19 @@
     Width="800"
     Height="450"
     prism:ViewModelLocator.AutoWireViewModel="True"
+    WindowChrome.WindowChrome="{DynamicResource WindowChromeKey}"
     WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
     mc:Ignorable="d">
     <Window.Resources>
+        <!--  当窗体WindowStyle="none"时出现的空白  -->
+        <WindowChrome
+            x:Key="WindowChromeKey"
+            CaptionHeight="0"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="0" />
         <converters:BoolToVisible x:Key="BoolToVisible" />
         <converters:VisibleToReverse x:Key="VisibleToReverse" />
         <HierarchicalDataTemplate x:Key="TreeItemStyle" ItemsSource="{Binding Children}">
@@ -38,10 +48,24 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
         <TreeView
+            Grid.Row="1"
             Grid.Column="0"
             ItemTemplate="{StaticResource TreeItemStyle}"
             ItemsSource="{Binding TreeMenuData}" />
-        <TabControl Grid.Column="1" prism:RegionManager.RegionName="TabRegion" />
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="1">
+            <Button Command="{Binding ExitCommand}" Content="关闭" />
+        </StackPanel>
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="1"
+            prism:RegionManager.RegionName="TabRegion" />
     </Grid>
 </Window>

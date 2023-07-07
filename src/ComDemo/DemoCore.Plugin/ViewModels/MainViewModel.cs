@@ -34,6 +34,8 @@ namespace DemoCore.Plugin.ViewModels
         private readonly IModuleManager _m;
         private readonly IEventAggregator _e;
         public DelegateCommand<string> NavigateCommand { get; }
+
+        public DelegateCommand ExitCommand { get; }
         private readonly IDictionary<string, Type> _compsCache = new ConcurrentDictionary<string, Type>();
         private List<SubSystem> _defaultSubs;
         private List<SubMenu> _defaultMenus;
@@ -48,6 +50,7 @@ namespace DemoCore.Plugin.ViewModels
             _defaultMenus = container.Resolve<List<SubMenu>>(nameof(SubMenu));
             _defautlLinks = container.Resolve<List<MenuLink>>(nameof(MenuLink));
             NavigateCommand = new DelegateCommand<string>(OpenTabItem);
+            ExitCommand = new DelegateCommand(() => Environment.Exit(0));
             TreeMenuData = new ObservableCollection<TreeMenu>();
             //
             LoadDb();
@@ -110,7 +113,7 @@ namespace DemoCore.Plugin.ViewModels
                     Assembly asm = Assembly.LoadFrom(path);
                     //Assembly asm = Assembly.LoadFile(path);
                     //Assembly asm = Assembly.Load("Demo.Plugin, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null");
-                    var a=asm.GetTypes();
+                    var a = asm.GetType();
                     type = asm.GetType(link.Class);
                     if (type == null)
                     {
@@ -121,6 +124,7 @@ namespace DemoCore.Plugin.ViewModels
                catch(Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    return;
                 }
                 _compsCache.Add(link.Assembly, type);
             }
@@ -128,6 +132,7 @@ namespace DemoCore.Plugin.ViewModels
             {
                 type = _compsCache[link.Assembly];
             }
+           
             var moduleCatalog = _c.Resolve<IModuleCatalog>();
             moduleCatalog.AddModule(new ModuleInfo()
             {
