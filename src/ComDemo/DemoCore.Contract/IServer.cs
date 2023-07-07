@@ -10,5 +10,7 @@ namespace DemoCore.Contract
         System.Windows.Window StartCore();
 
         int Sum(int a, int b);
+
+        void StartWPF();
     }
 }

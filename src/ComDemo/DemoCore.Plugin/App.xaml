@@ -1,0 +1,14 @@
+﻿<prism:PrismApplication
+    x:Class="DemoCore.Plugin.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:DemoCore.Plugin.Converters"
+    xmlns:local="clr-namespace:DemoCore.Plugin"
+    xmlns:prism="http://prismlibrary.com/">
+    <!--<Application.Resources>
+        <ResourceDictionary>
+            <converters:BoolToVisible x:Key="BoolToVisible" />
+            <converters:VisibleToReverse x:Key="VisibleToReverse" />
+        </ResourceDictionary>
+    </Application.Resources>-->
+</prism:PrismApplication>

@@ -10,11 +10,16 @@
     Height="250"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid>
+    <StackPanel>
         <Button
-            Width="80"
+            Width="120"
             Height="35"
             Click="Button_Click"
-            Content="启动" />
-    </Grid>
+            Content="启动插件" />
+        <Button
+            Width="120"
+            Height="35"
+            Click="Button_Click_1"
+            Content="启动Prism插件" />
+    </StackPanel>
 </Window>

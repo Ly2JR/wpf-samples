@@ -31,9 +31,15 @@ namespace DemoCore.Client
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var caller = new Server();
-            var mainView= caller.StartCore();
+            var mainView = caller.StartCore();
             mainView.ShowDialog();
             Application.Current.MainWindow = mainView;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var caller = new Server();
+            caller.StartWPF();
         }
     }
 

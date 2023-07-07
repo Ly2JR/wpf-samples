@@ -31,12 +31,18 @@ namespace DemoWin.Client
         {
             var comType = Type.GetTypeFromCLSID(Guid.Parse(DemoCore.Contract.ContractGuids.ServerClass));
             var active = System.Activator.CreateInstance(comType) as DemoCore.Contract.IServer;
-            //var sum=active.Sum(2,5);
-            //MessageBox.Show(sum.ToString());
-            var mainView=active.StartCore();
-            mainView.ShowDialog();
 
-            //失败
+            //var sum = active.Sum(2, 5);
+            //MessageBox.Show(sum.ToString());
+
+            //var mainView = active.StartCore();
+            //mainView.ShowDialog();
+
+            this.Hide();
+            active.StartWPF();
+            Close();
+
+            ////失败
             //DemoCore.Contract.IServer b = new ServerProxy();
             //MessageBox.Show(b.Sum(2, 5).ToString());
         }
