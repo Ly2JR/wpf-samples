@@ -22,12 +22,12 @@
     <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="MaterialDesignThemes.Wpf" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.8" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.10" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.5" />
-    <PackageReference Include="SqlSugarCore" Version="5.1.4.86" />
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.95" />
   </ItemGroup>
 
 </Project>

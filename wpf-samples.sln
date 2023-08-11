@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCore.Plugin", "src\ComD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoCore.Client", "src\ComDemo\DemoCore.Client\DemoCore.Client.csproj", "{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InkCanvasDemo", "src\InkCanvasDemo\InkCanvasDemo.csproj", "{17C2EC69-311B-4580-8A50-CE4AECE143D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C2EC69-311B-4580-8A50-CE4AECE143D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C2EC69-311B-4580-8A50-CE4AECE143D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C2EC69-311B-4580-8A50-CE4AECE143D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C2EC69-311B-4580-8A50-CE4AECE143D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{2E019E4B-9B23-457C-8EE7-67CD1397466A} = {C75CF17B-A518-46FA-A2EA-4E9EEC643C72}
 		{A4B25696-6115-4914-B938-8BAAAEC46681} = {C75CF17B-A518-46FA-A2EA-4E9EEC643C72}
 		{5DE271F6-C3B1-40C9-8FED-BA0F7C27FE49} = {C75CF17B-A518-46FA-A2EA-4E9EEC643C72}
+		{17C2EC69-311B-4580-8A50-CE4AECE143D8} = {8FEF1E9C-D043-46C0-B031-92220A36E318}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03DBFB9A-4E75-4822-9565-4FCCF44B33E7}
