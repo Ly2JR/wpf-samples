@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Ly2JR.iHome.Wpf\Ly2JR.iHome.Wpf.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.Ink">
+      <HintPath>C:\Program Files\Common Files\microsoft shared\ink\Microsoft.Ink.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

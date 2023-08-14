@@ -17,5 +17,8 @@
         <TabItem Header="画笔">
             <local:Canvas2 />
         </TabItem>
+        <TabItem Header="手写识别">
+            <local:Canvas3 />
+        </TabItem>
     </TabControl>
 </Window>

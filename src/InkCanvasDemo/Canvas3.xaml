@@ -8,5 +8,37 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <InkCanvas x:Name="myInkCanvas" />
+    <Canvas Name="theRootCanvas">
+        <Border
+            Canvas.Left="10"
+            Canvas.Top="10"
+            Width="300"
+            Height="300"
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="2">
+            <InkCanvas Name="theInkCanvas" />
+        </Border>
+        <TextBox
+            Name="textBox1"
+            Canvas.Left="10"
+            Canvas.Top="325"
+            Width="225"
+            Height="25" />
+        <Button
+            Canvas.Left="235"
+            Canvas.Top="325"
+            Width="75"
+            Height="25"
+            Click="buttonClick">
+            Recognize
+        </Button>
+        <Button
+            x:Name="btnClear"
+            Canvas.Left="10"
+            Canvas.Top="367"
+            Width="75"
+            Click="btnClear_Click"
+            Content="Clear Canvas" />
+    </Canvas>
 </UserControl>

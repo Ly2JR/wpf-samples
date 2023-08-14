@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Ink;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +18,50 @@ using System.Windows.Shapes;
 namespace InkCanvasDemo
 {
     /// <summary>
-    /// Canvas3.xaml 的交互逻辑
+    /// Canvas4.xaml 的交互逻辑
     /// </summary>
     public partial class Canvas3 : UserControl
     {
         public Canvas3()
         {
             InitializeComponent();
+        }
+
+        // Recognizes handwriting by using RecognizerContext
+        private void buttonClick(object sender, RoutedEventArgs e)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                theInkCanvas.Strokes.Save(ms);
+                var myInkCollector = new InkCollector();
+                var ink = new Ink();
+                ink.Load(ms.ToArray());
+
+                using (RecognizerContext context = new RecognizerContext())
+                {
+                    if (ink.Strokes.Count > 0)
+                    {
+                        context.Strokes = ink.Strokes;
+                        RecognitionStatus status;
+
+                        var result = context.Recognize(out status);
+
+                        if (status == RecognitionStatus.NoError)
+                            textBox1.Text = result.TopString;
+                        else
+                            MessageBox.Show("Recognition failed");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No stroke detected");
+                    }
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            theInkCanvas.Strokes.Clear();
         }
     }
 }

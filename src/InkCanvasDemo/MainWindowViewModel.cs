@@ -34,5 +34,8 @@ namespace InkCanvasDemo
                 MessageBox.Show(EditingModel);
             });
         }
+
+
+
     }
 }
