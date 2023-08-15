@@ -1,6 +1,7 @@
 ﻿using Ly2JR.iHome.Wpf.Commands;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace InkCanvasDemo
 {
     public class Canvas8ViewModel
     {
         public ICommand ClearCommand { get; private set; }
+        public ICommand SaveCommand { get; private set; }
         public Canvas8ViewModel()
         {
             ClearCommand = new RelayCommand((canvas) =>
@@ -22,6 +26,28 @@ namespace InkCanvasDemo
                 {
                     main.Strokes.Clear();
                     main.Children.Clear();
+                }
+            });
+            SaveCommand = new RelayCommand((canvas) =>
+            {
+                if (canvas is InkCanvas main)
+                {
+                    var saveFileDialog = new Microsoft.Win32.SaveFileDialog()
+                    {
+                        DefaultExt =".png" ,
+                        Filter = "PNG(*.png)|*png",
+                    };
+                    var dialog= saveFileDialog.ShowDialog();
+                    if (dialog != true) return;
+
+                    using (var file = saveFileDialog.OpenFile())
+                    {
+                        var rtb = new RenderTargetBitmap((int)main.ActualWidth, (int)main.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
+                        rtb.Render(main);
+                        var encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(rtb));
+                        encoder.Save(file);
+                    }
                 }
             });
         }
