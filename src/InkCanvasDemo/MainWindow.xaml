@@ -20,8 +20,17 @@
         <TabItem Header="手写识别">
             <local:Canvas3View />
         </TabItem>
-        <TabItem Header="直线">
+        <TabItem Header="画直线">
             <local:Canvas4View />
+        </TabItem>
+        <TabItem Header="画箭头">
+            <local:Canvas5View />
+        </TabItem>
+        <TabItem Header="画矩形">
+            <local:Canvas6View />
+        </TabItem>
+        <TabItem Header="画圆形">
+            <local:Canvas7View />
         </TabItem>
     </TabControl>
 </Window>
