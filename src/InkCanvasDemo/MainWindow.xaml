@@ -32,5 +32,8 @@
         <TabItem Header="画圆形">
             <local:Canvas7View />
         </TabItem>
+        <TabItem Header="添加文本">
+            <local:Canvas8View />
+        </TabItem>
     </TabControl>
 </Window>
