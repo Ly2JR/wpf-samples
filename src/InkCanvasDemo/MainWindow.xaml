@@ -12,13 +12,16 @@
 
     <TabControl>
         <TabItem Header="基本用法">
-            <local:Canvas1 />
+            <local:Canvas1View />
         </TabItem>
         <TabItem Header="画笔">
-            <local:Canvas2 />
+            <local:Canvas2View />
         </TabItem>
         <TabItem Header="手写识别">
-            <local:Canvas3 />
+            <local:Canvas3View />
+        </TabItem>
+        <TabItem Header="直线">
+            <local:Canvas4View />
         </TabItem>
     </TabControl>
 </Window>

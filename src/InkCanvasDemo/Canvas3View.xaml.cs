@@ -20,9 +20,9 @@ namespace InkCanvasDemo
     /// <summary>
     /// Canvas4.xaml 的交互逻辑
     /// </summary>
-    public partial class Canvas3 : UserControl
+    public partial class Canvas3View : UserControl
     {
-        public Canvas3()
+        public Canvas3View()
         {
             InitializeComponent();
         }

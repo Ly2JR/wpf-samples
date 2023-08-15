@@ -16,20 +16,14 @@ using System.Windows.Shapes;
 namespace InkCanvasDemo
 {
     /// <summary>
-    /// Canvas1.xaml 的交互逻辑
+    /// Canvas4.xaml 的交互逻辑
     /// </summary>
-    public partial class Canvas1 : UserControl
+    public partial class Canvas4View : UserControl
     {
-        public Canvas1()
+        public Canvas4View()
         {
             InitializeComponent();
-        }
-        private void RightMouseUpHandler(object sender,
-                               System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Matrix m = new Matrix();
-            m.Scale(1.1d, 1.1d);
-            ((InkCanvas)sender).Strokes.Transform(m, true);
+            this.DataContext = new Canvas4ViewModel();
         }
     }
 }
